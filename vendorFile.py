@@ -25,7 +25,7 @@ if __name__ == "__main__":
 
 	# open file and rewrite
 	f = open('oui.py','w')
-	f.write('oui = {\n')
+	f.write('# -*- coding: utf-8 -*-\noui = {\n')
 
     # parsing oui.txt data
 	with open(OUI_FILE) as infile:
