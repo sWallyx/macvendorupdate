@@ -17,10 +17,8 @@ def dlProgress(count, blockSize, totalSize):
 	sys.stdout.write("\r" + rem_file + " ========= -> %d%%" % percent)
 	sys.stdout.flush()
 
-#
-#
 if __name__ == "__main__":
-    #
+    
     # download oui.txt
 	print "Downloading from",OUI_URL
 	urllib.urlretrieve(OUI_URL, OUI_FILE, reporthook=dlProgress)
@@ -38,9 +36,9 @@ if __name__ == "__main__":
 				except:
 					mac = vendor = ''
 
-				newline = '\t"%s": ' % mac.strip().replace("-",":").lower()
-				newline+= '"%s",\n' % vendor.strip().replace("'","`")
-				f.write(newline)
+				n = '\t"%s": ' % mac.strip().replace("-",":").lower()
+				n += '"%s",\n' % vendor.strip().replace("'","`")
+				f.write(n)
 
 	f.write('}')
 
