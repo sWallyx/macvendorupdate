@@ -8,7 +8,7 @@ setup(
     author='sWallyx',
     keywords=['mac address', 'wifi', 'brands', 'people'],
     classifiers=[],
-    install_requires=[],
+    install_requires=["click"],
     setup_requires=[],
     tests_require=[],
 )
