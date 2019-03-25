@@ -85,9 +85,8 @@ def updateMysql():
 	conn.close()
 
 	#Remove temporal file
-	print "Removing temportal file"
+	print "\nRemoving temportal file"
 	# Remove downloaded file
 	os.remove(OUI_FILE)
 
 	print "Done"
-	
