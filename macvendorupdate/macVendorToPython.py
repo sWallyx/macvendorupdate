@@ -9,16 +9,17 @@ import pathlib
 global rem_file
 rem_file = "oui.txt"
 
-OUI_URL = "http://standards.ieee.org/develop/regauth/oui/oui.txt"
-OUI_FILE = "oui.txt"
-
 def dlProgress(count, blockSize, totalSize):
 	percent = int(count*blockSize*100/totalSize)
 	sys.stdout.write("\r" + rem_file + " ========= -> %d%%" % percent)
 	sys.stdout.flush()
 
-if __name__ == "__main__":
-    
+def updatePython():
+	# Define variables
+	rem_file = "oui.txt"
+
+	OUI_URL = "http://standards.ieee.org/develop/regauth/oui/oui.txt"
+	OUI_FILE = "oui.txt"
     # download oui.txt
 	print "Downloading from",OUI_URL
 	urllib.urlretrieve(OUI_URL, OUI_FILE, reporthook=dlProgress)
@@ -45,6 +46,9 @@ if __name__ == "__main__":
 	# close file
 	f.close()
 	print "\noui.py updated"
-#
-# EOF
-#
+
+	print "Removing temportal file"
+	# Remove downloaded file
+	os.remove(OUI_FILE)
+
+	print "Done"

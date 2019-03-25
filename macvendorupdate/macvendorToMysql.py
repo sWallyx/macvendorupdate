@@ -4,6 +4,7 @@ import re
 import urllib
 import sys
 import mysql.connector
+import os
 
 # global variable to be used in dlProgress
 global rem_file
@@ -37,7 +38,14 @@ def dlProgress(count, blockSize, totalSize):
 	sys.stdout.flush()
 #
 #
-if __name__ == "__main__":
+def updateMysql():
+	# get database info
+	print "Insert the database info"
+	setHost = raw_input("\nSet the host:  ")
+	setDb = raw_input("\nSet the database:  ")
+	setUser = raw_input("\nSet the user:  ")
+	setPword = raw_input("\nSet the password:  ")
+
     #
     # download oui.txt
 	print "Downloading ",OUI_URL
@@ -45,7 +53,7 @@ if __name__ == "__main__":
     #
     #connect to db
 	try:
-		conn = mysql.connector.connect(host='host',database='db',user='user',password='pass')
+		conn = mysql.connector.connect(host=setHost,database=setDb,user=setUser,password=setPword)
 	except:
 		sys.exit("I am unable to connect to the database")
     #
@@ -76,6 +84,10 @@ if __name__ == "__main__":
 	cur.close()
 	conn.close()
 
-#
-# EOF
-#
+	#Remove temporal file
+	print "Removing temportal file"
+	# Remove downloaded file
+	os.remove(OUI_FILE)
+
+	print "Done"
+	
