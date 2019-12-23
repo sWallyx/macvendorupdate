@@ -77,4 +77,4 @@ python setup.py install
 License
 ----
 
-MIT
+[MIT - License](LICENSE)
