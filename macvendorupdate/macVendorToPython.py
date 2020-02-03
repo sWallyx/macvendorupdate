@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 #
 import re
-import urllib
+import urllib.request as urllib
 import sys
 import os
 import pathlib
