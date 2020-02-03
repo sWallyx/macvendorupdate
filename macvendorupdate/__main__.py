@@ -3,8 +3,8 @@ import os
 import pathlib
 import click
 
-from macvendorToMysql import *
-from macVendorToPython import *
+from macvendorToMysql import updateMysql
+from macVendorToPython import updatePython
 
 
 @click.command()
