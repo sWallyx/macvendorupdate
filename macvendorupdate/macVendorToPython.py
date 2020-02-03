@@ -1,12 +1,8 @@
-#!/usr/bin/env python
-#
 import re
 import urllib.request as urllib
 import sys
 import os
-import pathlib
 
-global REM_FILE
 REM_FILE = "oui.txt"
 
 

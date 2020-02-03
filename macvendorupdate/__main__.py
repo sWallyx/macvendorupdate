@@ -1,17 +1,13 @@
-import sys
-import os
-import pathlib
-import click
-
 from macvendorToMysql import updateMysql
 from macVendorToPython import updatePython
+import click
 
 
 @click.command()
 @click.option('-p', '--python', is_flag=True, help='Updates/generates python oui file with mac vendor info')
 @click.option('-m', '--mysql', is_flag=True, help='Writes the infor of the mac vendor into the sql database')
 def main(python, mysql):
-    print('''
+    print(r'''
     __  ___              _    __               __              __  __          __      __     
    /  |/  /___ ______   | |  / /__  ____  ____/ /___  _____   / / / /___  ____/ /___ _/ /____ 
   / /|_/ / __ `/ ___/   | | / / _ \/ __ \/ __  / __ \/ ___/  / / / / __ \/ __  / __ `/ __/ _ \ 

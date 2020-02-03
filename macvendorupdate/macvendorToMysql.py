@@ -4,9 +4,6 @@ import sys
 import mysql.connector
 import os
 
-# global variable to be used in dlProgress
-global rem_file
-rem_file = "oui.txt"
 """
 	SQL minimal table needed by script:
 	-- Table: mac_vendors
@@ -23,17 +20,18 @@ rem_file = "oui.txt"
 	);
 	ALTER TABLE mac_vendors
 	OWNER TO DBUSER;
-	
 """
-#
 
-OUI_URL = "http://standards.ieee.org/develop/regauth/oui/oui.txt"
 OUI_FILE = "oui.txt"
+OUI_URL = "http://standards.ieee.org/develop/regauth/oui/"+OUI_FILE
 
 
 def dlProgress(count, blockSize, totalSize):
+    """
+        Creates a progress bar to indicate the download progress
+    """
     percent = int(count*blockSize*100/totalSize)
-    sys.stdout.write("\r" + rem_file + "...%d%%" % percent)
+    sys.stdout.write("\r" + OUI_FILE + "...%d%%" % percent)
     sys.stdout.flush()
 
 
