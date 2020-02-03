@@ -59,7 +59,7 @@ ALTER TABLE mac_vendors
 ### Used modules
 
 * re
-* urllib
+* urllib.request
 * sys
 * mysql.connector
 * pathlib
