@@ -67,7 +67,7 @@ ALTER TABLE mac_vendors
 
 ## Requisites
 
-The unique requisite is "click", you can run the following command to install it.
+To install the requisites you can run:
 
 ```
 python setup.py install
