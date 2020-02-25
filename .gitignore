@@ -62,3 +62,6 @@ target/
 
 # Visual Code folder
 .vscode
+
+# Output file
+oui.py
