@@ -2,9 +2,9 @@ from typing import IO
 import re
 import os
 
-from misc_functions import downloadFile
+from misc_functions import downloadFile, openPythonFile, closePythonFile
 
-from global_values import OUI_FILE, OUI_URL
+from global_values import OUI_FILE, OUI_URL, OUTPUT_FILE_NAME
 
 
 def writeToFile(file_name: str, file: IO):
@@ -34,19 +34,14 @@ def updatePython():
         Downloads the file to process and generates a Python file (oui.py)
         with a JSON object with the MAC address and vendors.
     """
+
     downloadFile(OUI_URL, OUI_FILE)
 
-    # open file and rewrite
-    f = open('oui.py', 'w')
-    f.write('# -*- coding: utf-8 -*-\noui = {\n')
+    f = openPythonFile(OUTPUT_FILE_NAME)
 
     writeToFile(OUI_FILE, f)
 
-    f.write('}')
-
-    # close file
-    f.close()
-    print("\noui.py updated")
+    closePythonFile(f)
 
     print("Removing temportal file")
     # Remove downloaded file

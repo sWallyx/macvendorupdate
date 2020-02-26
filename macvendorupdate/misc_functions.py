@@ -1,3 +1,4 @@
+from typing import IO
 import urllib.request as urllib
 import sys
 
@@ -23,3 +24,36 @@ def downloadFile(url: str, file_name: str):
 
     print("Downloading from", download_url)
     urllib.urlretrieve(download_url, file_name, reporthook=dlProgress)
+
+
+def openPythonFile(file_name: str):
+    """
+        Creates or opens the file if exists. And starts writing on it.
+
+        If the file was already on the system, it will rewrite it.
+
+        Args:
+            file_name {str}: name of the file, no extension
+
+        Return:
+            python_file {IO}: file object
+    """
+    python_file = open(file_name + '.py', 'w')
+    python_file.write('# -*- coding: utf-8 -*-\noui = {\n')
+
+    return python_file
+
+def closePythonFile(python_file: IO):
+    """
+        Closes the file, closing first the object inside it.
+
+        Args:
+            python_file {IO}:
+    """
+    python_file.write('}')
+
+    # close file
+    python_file.close()
+
+    # write update to console
+    print("\noui.py updated")
