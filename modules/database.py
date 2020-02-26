@@ -1,5 +1,6 @@
 from getpass import getpass
 
+
 class Database():
 
     def __init__(self):

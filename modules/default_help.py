@@ -1,5 +1,6 @@
 import click
 
+
 class DefaultHelp(click.Command):
     def __init__(self, *args, **kwargs):
         context_settings = kwargs.setdefault('context_settings', {})

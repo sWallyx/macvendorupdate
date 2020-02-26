@@ -1,5 +1,4 @@
 import re
-import urllib.request as urllib
 import sys
 import mysql.connector
 import os
@@ -27,6 +26,7 @@ from global_values import OUI_FILE, OUI_URL
 	OWNER TO DBUSER;
 """
 
+
 def updateMysql():
     # create database_config object
     database_config = Database()
@@ -43,7 +43,8 @@ def updateMysql():
             host=database_config.db_host,
             database=database_config.db_name,
             user=database_config.db_user,
-            password=database_config.db_pass)
+            password=database_config.db_pass
+        )
     except:
         sys.exit("I am unable to connect to the database, does it really exist.")
 

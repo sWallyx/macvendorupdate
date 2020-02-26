@@ -1,11 +1,11 @@
 from typing import IO
-import urllib.request as urllib
 import re
 import os
 
 from misc_functions import dlProgress, downloadFile
 
 from global_values import OUI_FILE, OUI_URL
+
 
 def writeToFile(file_name: str, file: IO):
     """
@@ -27,6 +27,7 @@ def writeToFile(file_name: str, file: IO):
                 n = '\t"%s": ' % mac.strip().replace("-", ":").lower()
                 n += '"%s",\n' % vendor.strip().replace("'", "`")
                 file.write(n)
+
 
 def updatePython():
     """

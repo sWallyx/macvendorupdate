@@ -8,7 +8,7 @@ from macVendorToPython import updatePython
 @click.command(cls=DefaultHelp)
 @click.option('-p', '--python', is_flag=True, help='Updates/generates python oui file with mac vendor info')
 @click.option('-m', '--mysql', is_flag=True, help='Writes the infor of the mac vendor into the sql database')
-def main(python = False, mysql = False):
+def main(python=False, mysql=False):
     """
         Gets all the mac address from standards.ieee.org and creates a python
         file or inserts the information into the database. All depends in what
