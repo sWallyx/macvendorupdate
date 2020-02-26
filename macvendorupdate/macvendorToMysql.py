@@ -4,7 +4,7 @@ import mysql.connector
 import os
 
 from modules.database import Database
-from misc_functions import dlProgress, downloadFile
+from misc_functions import downloadFile
 
 from global_values import OUI_FILE, OUI_URL
 

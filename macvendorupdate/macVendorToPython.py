@@ -2,7 +2,7 @@ from typing import IO
 import re
 import os
 
-from misc_functions import dlProgress, downloadFile
+from misc_functions import downloadFile
 
 from global_values import OUI_FILE, OUI_URL
 
