@@ -4,6 +4,11 @@ import sys
 import mysql.connector
 import os
 
+from modules.database import Database
+from misc_functions import dlProgress, downloadFile
+
+from global_values import OUI_FILE, OUI_URL
+
 """
 	SQL minimal table needed by script:
 	-- Table: mac_vendors
@@ -22,37 +27,25 @@ import os
 	OWNER TO DBUSER;
 """
 
-OUI_FILE = "oui.txt"
-OUI_URL = "http://standards.ieee.org/develop/regauth/oui/"+OUI_FILE
-
-
-def dlProgress(count, blockSize, totalSize):
-    """
-        Creates a progress bar to indicate the download progress
-    """
-    percent = int(count*blockSize*100/totalSize)
-    sys.stdout.write("\r" + OUI_FILE + "...%d%%" % percent)
-    sys.stdout.flush()
-
-
 def updateMysql():
-    # get database info
-    print("Insert the database info")
-    setHost = input("\nSet the host:  ")
-    setDb = input("\nSet the database:  ")
-    setUser = input("\nSet the user:  ")
-    setPword = input("\nSet the password:  ")
+    # create database_config object
+    database_config = Database()
+
+    # ask for database config
+    database_config.ask_for_setup()
 
     # download oui.txt
-    print("Downloading ", OUI_URL)
-    urllib.urlretrieve(OUI_URL, OUI_FILE, reporthook=dlProgress)
+    downloadFile(OUI_URL, OUI_FILE)
 
     # connect to db
     try:
         conn = mysql.connector.connect(
-            host=setHost, database=setDb, user=setUser, password=setPword)
+            host=database_config.db_host,
+            database=database_config.db_name,
+            user=database_config.db_user,
+            password=database_config.db_pass)
     except:
-        sys.exit("I am unable to connect to the database")
+        sys.exit("I am unable to connect to the database, does it really exist.")
 
     cur = conn.cursor()
     # parsing oui.txt data
