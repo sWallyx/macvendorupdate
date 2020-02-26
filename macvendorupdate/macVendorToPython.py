@@ -1,33 +1,16 @@
 from typing import IO
-import urllib.request as urllib
 import re
-import sys
 import os
 
+from misc_functions import(
+    downloadFile,
+    openPythonFile,
+    closePythonFile,
+    getValuesFromLine
+)
 
-REM_FILE = "oui.txt"
+from global_values import OUI_FILE, OUI_URL, OUTPUT_FILE_NAME
 
-
-def dlProgress(count, blockSize, totalSize):
-    """
-        Creates a progress bar to indicate the download progress.
-    """
-    percent = int(count*blockSize*100/totalSize)
-    sys.stdout.write("\r" + REM_FILE + " ========= -> %d%%" % percent)
-    sys.stdout.flush()
-
-def downloadFileWithProgressBar(url: str, file_name: str):
-    """
-        Downloads the given file from the given URL
-
-        Args:
-            url {str}: Url to search the file
-            file_name {str}: Name of the file to download
-    """
-    download_url = url+file_name
-
-    print("Downloading from", download_url)
-    urllib.urlretrieve(download_url, file_name, reporthook=dlProgress)
 
 def writeToFile(file_name: str, file: IO):
     """
@@ -41,36 +24,29 @@ def writeToFile(file_name: str, file: IO):
     with open(file_name) as infile:
         for line in infile:
             if re.search("(hex)", line):
-                try:
-                    mac, vendor = line.strip().split("(hex)")
-                except:
-                    mac = vendor = ''
+                mac, vendor = getValuesFromLine(line)
 
                 n = '\t"%s": ' % mac.strip().replace("-", ":").lower()
                 n += '"%s",\n' % vendor.strip().replace("'", "`")
                 file.write(n)
+
 
 def updatePython():
     """
         Downloads the file to process and generates a Python file (oui.py)
         with a JSON object with the MAC address and vendors.
     """
-    downloadFileWithProgressBar("http://standards.ieee.org/develop/regauth/oui/", REM_FILE)
 
-    # open file and rewrite
-    f = open('oui.py', 'w')
-    f.write('# -*- coding: utf-8 -*-\noui = {\n')
+    downloadFile(OUI_URL, OUI_FILE)
 
-    writeToFile(REM_FILE, f)
+    f = openPythonFile(OUTPUT_FILE_NAME)
 
-    f.write('}')
+    writeToFile(OUI_FILE, f)
 
-    # close file
-    f.close()
-    print("\noui.py updated")
+    closePythonFile(f)
 
     print("Removing temportal file")
     # Remove downloaded file
-    os.remove(REM_FILE)
+    os.remove(OUI_FILE)
 
     print("Done")

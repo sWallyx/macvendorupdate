@@ -1,68 +1,46 @@
 import re
-import urllib.request as urllib
 import sys
 import mysql.connector
 import os
 
-"""
-	SQL minimal table needed by script:
-	-- Table: mac_vendors
-	-- DROP TABLE mac_vendors;
-	CREATE TABLE mac_vendors
-	(
-	oui character varying(8) NOT NULL,
-	vendor character varying NOT NULL,
-	id serial NOT NULL,
-	CONSTRAINT pk_mac_vendors PRIMARY KEY (oui)
-	)
-	WITH (
-	OIDS=FALSE
-	);
-	ALTER TABLE mac_vendors
-	OWNER TO DBUSER;
-"""
+from modules.database import Database
+from misc_functions import downloadFile, getValuesFromLine
 
-OUI_FILE = "oui.txt"
-OUI_URL = "http://standards.ieee.org/develop/regauth/oui/"+OUI_FILE
-
-
-def dlProgress(count, blockSize, totalSize):
-    """
-        Creates a progress bar to indicate the download progress
-    """
-    percent = int(count*blockSize*100/totalSize)
-    sys.stdout.write("\r" + OUI_FILE + "...%d%%" % percent)
-    sys.stdout.flush()
+from global_values import OUI_FILE, OUI_URL
 
 
 def updateMysql():
-    # get database info
-    print("Insert the database info")
-    setHost = input("\nSet the host:  ")
-    setDb = input("\nSet the database:  ")
-    setUser = input("\nSet the user:  ")
-    setPword = input("\nSet the password:  ")
+    """
+        Writes the info from the file into the MySQL table.
 
-    # download oui.txt
-    print("Downloading ", OUI_URL)
-    urllib.urlretrieve(OUI_URL, OUI_FILE, reporthook=dlProgress)
+        NOTE: Read README.md to know the needed table structure
+    """
+    # create database_config object
+    database_config = Database()
 
-    # connect to db
+    # ask for database config
+    database_config.ask_for_setup()
+
+    # test db connection
     try:
         conn = mysql.connector.connect(
-            host=setHost, database=setDb, user=setUser, password=setPword)
-    except:
-        sys.exit("I am unable to connect to the database")
+            host=database_config.db_host,
+            database=database_config.db_name,
+            user=database_config.db_user,
+            password=database_config.db_pass
+        )
+    except mysql.connector.Error:
+        sys.exit("I am unable to connect to the database, does it really exist.")
+
+    # download oui.txt
+    downloadFile(OUI_URL, OUI_FILE)
 
     cur = conn.cursor()
     # parsing oui.txt data
     with open(OUI_FILE) as infile:
         for line in infile:
             if re.search("(hex)", line):
-                try:
-                    mac, vendor = line.strip().split("(hex)")
-                except:
-                    mac = vendor = ''
+                mac, vendor = getValuesFromLine(line)
 
                 if mac != '' and vendor != '':
                     sql = "INSERT INTO mac_vendors "
