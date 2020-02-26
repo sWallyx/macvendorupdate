@@ -64,6 +64,7 @@ ALTER TABLE mac_vendors
 * mysql.connector
 * pathlib
 * os
+* click
 
 ## Requisites
 
