@@ -29,7 +29,7 @@ def updateMysql():
             user=database_config.db_user,
             password=database_config.db_pass
         )
-    except:
+    except mysql.connector.Error:
         sys.exit("I am unable to connect to the database, does it really exist.")
 
     # download oui.txt
