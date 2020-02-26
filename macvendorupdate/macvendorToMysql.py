@@ -4,30 +4,17 @@ import mysql.connector
 import os
 
 from modules.database import Database
-from misc_functions import downloadFile
+from misc_functions import downloadFile, getValuesFromLine
 
 from global_values import OUI_FILE, OUI_URL
 
-"""
-	SQL minimal table needed by script:
-	-- Table: mac_vendors
-	-- DROP TABLE mac_vendors;
-	CREATE TABLE mac_vendors
-	(
-	oui character varying(8) NOT NULL,
-	vendor character varying NOT NULL,
-	id serial NOT NULL,
-	CONSTRAINT pk_mac_vendors PRIMARY KEY (oui)
-	)
-	WITH (
-	OIDS=FALSE
-	);
-	ALTER TABLE mac_vendors
-	OWNER TO DBUSER;
-"""
-
 
 def updateMysql():
+    """
+        Writes the info from the file into the MySQL table.
+
+        NOTE: Read README.md to know the needed table structure
+    """
     # create database_config object
     database_config = Database()
 
@@ -53,10 +40,7 @@ def updateMysql():
     with open(OUI_FILE) as infile:
         for line in infile:
             if re.search("(hex)", line):
-                try:
-                    mac, vendor = line.strip().split("(hex)")
-                except:
-                    mac = vendor = ''
+                mac, vendor = getValuesFromLine(line)
 
                 if mac != '' and vendor != '':
                     sql = "INSERT INTO mac_vendors "

@@ -43,6 +43,7 @@ def openPythonFile(file_name: str):
 
     return python_file
 
+
 def closePythonFile(python_file: IO):
     """
         Closes the file, closing first the object inside it.
@@ -57,3 +58,25 @@ def closePythonFile(python_file: IO):
 
     # write update to console
     print("\noui.py updated")
+
+
+def getValuesFromLine(line_to_split: bytes):
+    """
+        Splits the line into 2 values if possible.
+
+        Otherwise, it creates an empty line.
+
+        Args:
+            line_to_split {bytes}: line to split
+
+        Return:
+            v1 {str}: mac value, first element of split
+            v2 {str}: vendor value, second element of split
+    """
+    
+    try:
+        v1, v2 = line_to_split.strip().split("(hex)")
+    except Exception:
+        v1 = v2 = ''
+
+    return v1, v2

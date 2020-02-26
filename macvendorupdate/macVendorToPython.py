@@ -2,7 +2,12 @@ from typing import IO
 import re
 import os
 
-from misc_functions import downloadFile, openPythonFile, closePythonFile
+from misc_functions import(
+    downloadFile,
+    openPythonFile,
+    closePythonFile,
+    getValuesFromLine
+)
 
 from global_values import OUI_FILE, OUI_URL, OUTPUT_FILE_NAME
 
@@ -19,10 +24,7 @@ def writeToFile(file_name: str, file: IO):
     with open(file_name) as infile:
         for line in infile:
             if re.search("(hex)", line):
-                try:
-                    mac, vendor = line.strip().split("(hex)")
-                except:
-                    mac = vendor = ''
+                mac, vendor = getValuesFromLine(line)
 
                 n = '\t"%s": ' % mac.strip().replace("-", ":").lower()
                 n += '"%s",\n' % vendor.strip().replace("'", "`")
