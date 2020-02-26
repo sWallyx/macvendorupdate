@@ -73,7 +73,7 @@ def getValuesFromLine(line_to_split: bytes):
             v1 {str}: mac value, first element of split
             v2 {str}: vendor value, second element of split
     """
-    
+
     try:
         v1, v2 = line_to_split.strip().split("(hex)")
     except Exception:
