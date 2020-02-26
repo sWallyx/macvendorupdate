@@ -8,7 +8,7 @@ def dlProgress(count, blockSize, totalSize):
         Creates a progress bar to indicate the download progress
     """
     percent = int(count*blockSize*100/totalSize)
-    sys.stdout.write("\r ...%d%%" % percent)
+    sys.stdout.write("\r%d%%" % percent)
     sys.stdout.flush()
 
 
