@@ -20,10 +20,10 @@ def downloadFile(url: str, file_name: str):
             url {str}: Url to search the file
             file_name {str}: Name of the file to download
     """
-    download_url = url+file_name
+    # download_url = url+file_name
 
-    print("Downloading from", download_url)
-    urllib.urlretrieve(download_url, file_name, reporthook=dlProgress)
+    print("Downloading from", url+file_name)
+    urllib.urlretrieve(url+file_name, file_name, reporthook=dlProgress)
 
 
 def openPythonFile(file_name: str):
