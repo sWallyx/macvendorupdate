@@ -10,7 +10,6 @@ class Database_settings():
         self.db_name = None
         self.db_user = None
         self.db_pass = None
-        self.conn = None
 
     def ask_for_setup(self):
         """
@@ -27,6 +26,12 @@ class Database_settings():
         self.db_pass = getpass()
 
     def check_db_connection(self):
+        """
+            Check if the connection is OK to continue.
+            If not shows message and quits.
+
+            TODO: Make it a loop.
+        """
         try:
             conn = mysql.connector.connect(
                 host=self.db_host,

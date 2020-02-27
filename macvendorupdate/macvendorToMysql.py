@@ -23,10 +23,12 @@ def updateMysql():
     # test db connection
     conn = database_config.check_db_connection()
 
+    # get cursor
+    cur = conn.cursor()
+
     # download oui.txt
     downloadFile(OUI_URL, OUI_FILE)
 
-    cur = conn.cursor()
     # parsing oui.txt data
     with open(OUI_FILE) as infile:
         for line in infile:
