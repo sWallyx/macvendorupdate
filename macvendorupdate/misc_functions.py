@@ -1,7 +1,7 @@
 from typing import IO
 import urllib.request as urllib
 import sys
-
+import os
 
 def dlProgress(count, blockSize, totalSize):
     """
@@ -20,7 +20,6 @@ def downloadFile(url: str, file_name: str):
             url {str}: Url to search the file
             file_name {str}: Name of the file to download
     """
-    # download_url = url+file_name
 
     print("Downloading from", url+file_name)
     urllib.urlretrieve(url+file_name, file_name, reporthook=dlProgress)
@@ -80,3 +79,11 @@ def getValuesFromLine(line_to_split: bytes):
         v1 = v2 = ''
 
     return v1, v2
+
+def end_steps(file_to_remove):
+    # Remove temporal file
+    print("\nRemoving temportal file")
+    os.remove(file_to_remove)
+
+    print("Done!")
+    print("Thanks, see you soon!")

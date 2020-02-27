@@ -3,7 +3,11 @@ import os
 
 from modules.database_settings import Database_settings
 from modules.database_actions import Database_actions
-from misc_functions import downloadFile, getValuesFromLine
+from misc_functions import (
+    downloadFile,
+    getValuesFromLine,
+    end_steps
+)
 
 from global_values import OUI_FILE, OUI_URL
 
@@ -47,9 +51,4 @@ def updateMysql():
 
     database_action.close_database()
 
-    # Remove temporal file
-    print("\nRemoving temportal file")
-    os.remove(OUI_FILE)
-
-    print("Done!")
-    print("Thanks, see you soon!")
+    end_steps(OUI_FILE)

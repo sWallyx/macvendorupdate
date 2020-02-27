@@ -6,7 +6,8 @@ from misc_functions import(
     downloadFile,
     openPythonFile,
     closePythonFile,
-    getValuesFromLine
+    getValuesFromLine,
+    end_steps
 )
 
 from global_values import OUI_FILE, OUI_URL, OUTPUT_FILE_NAME
@@ -28,6 +29,7 @@ def writeToFile(file_name: str, file: IO):
 
                 n = '\t"%s": ' % mac.strip().replace("-", ":").lower()
                 n += '"%s",\n' % vendor.strip().replace("'", "`")
+                
                 file.write(n)
 
 
@@ -45,8 +47,4 @@ def updatePython():
 
     closePythonFile(f)
 
-    print("Removing temportal file")
-    # Remove downloaded file
-    os.remove(OUI_FILE)
-
-    print("Done")
+    end_steps(OUI_FILE)
