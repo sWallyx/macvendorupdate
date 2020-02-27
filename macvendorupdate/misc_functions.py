@@ -81,6 +81,20 @@ def getValuesFromLine(line_to_split: bytes):
     return v1, v2
 
 def strip_and_concat(mac, vendor, python_option=True):
+    """
+        Creates single string depending on the selected mode.
+
+        TODO: Make it simpler without the python_option flag
+
+        Args:
+            mac {str}: mac address
+            vendor {str}: vendor string
+            python_option {bool}: default True. Flag to choose if
+                python mode selected or mysql
+
+        Returns:
+            str: concat string with the selected format
+    """
     if(python_option):
         string = '\t"%s": ' % mac.strip().replace("-", ":").lower()
         string += '"%s",\n' % vendor.strip().replace("'", "`")
