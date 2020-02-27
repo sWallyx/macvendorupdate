@@ -80,6 +80,17 @@ def getValuesFromLine(line_to_split: bytes):
 
     return v1, v2
 
+def strip_and_concat(mac, vendor, python_option=True):
+    if(python_option):
+        string = '\t"%s": ' % mac.strip().replace("-", ":").lower()
+        string += '"%s",\n' % vendor.strip().replace("'", "`")
+    else:
+        string = "'%s'," % mac.strip().replace("-", ":").lower()
+        string += "'%s'" % vendor.strip().replace("'", "`")
+
+    return string
+
+
 def end_steps(file_to_remove):
     # Remove temporal file
     print("\nRemoving temportal file")

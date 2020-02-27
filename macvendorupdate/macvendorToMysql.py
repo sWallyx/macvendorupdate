@@ -5,6 +5,7 @@ from modules.database_actions import Database_actions
 from misc_functions import (
     downloadFile,
     getValuesFromLine,
+    strip_and_concat,
     end_steps
 )
 
@@ -42,8 +43,7 @@ def updateMysql():
                     sql = "INSERT INTO mac_vendors "
                     sql += "(oui,vendor) "
                     sql += "VALUES ("
-                    sql += "'%s'," % mac.strip().replace("-", ":").lower()
-                    sql += "'%s'" % vendor.strip().replace("'", "`")
+                    sql += strip_and_concat(mac, vendor, False)
                     sql += ")"
 
                     database_action.execute_query(sql)

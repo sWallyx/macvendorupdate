@@ -6,6 +6,7 @@ from misc_functions import(
     openPythonFile,
     closePythonFile,
     getValuesFromLine,
+    strip_and_concat,
     end_steps
 )
 
@@ -26,8 +27,10 @@ def writeToFile(file_name: str, file: IO):
             if re.search("(hex)", line):
                 mac, vendor = getValuesFromLine(line)
 
-                n = '\t"%s": ' % mac.strip().replace("-", ":").lower()
-                n += '"%s",\n' % vendor.strip().replace("'", "`")
+                # n = '\t"%s": ' % mac.strip().replace("-", ":").lower()
+                # n += '"%s",\n' % vendor.strip().replace("'", "`")
+
+                n = strip_and_concat(mac, vendor)
 
                 file.write(n)
 
