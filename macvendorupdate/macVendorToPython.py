@@ -1,12 +1,13 @@
 from typing import IO
 import re
-import os
 
 from misc_functions import(
     downloadFile,
     openPythonFile,
     closePythonFile,
-    getValuesFromLine
+    getValuesFromLine,
+    strip_and_concat,
+    end_steps
 )
 
 from global_values import OUI_FILE, OUI_URL, OUTPUT_FILE_NAME
@@ -26,8 +27,11 @@ def writeToFile(file_name: str, file: IO):
             if re.search("(hex)", line):
                 mac, vendor = getValuesFromLine(line)
 
-                n = '\t"%s": ' % mac.strip().replace("-", ":").lower()
-                n += '"%s",\n' % vendor.strip().replace("'", "`")
+                # n = '\t"%s": ' % mac.strip().replace("-", ":").lower()
+                # n += '"%s",\n' % vendor.strip().replace("'", "`")
+
+                n = strip_and_concat(mac, vendor)
+
                 file.write(n)
 
 
@@ -45,8 +49,4 @@ def updatePython():
 
     closePythonFile(f)
 
-    print("Removing temportal file")
-    # Remove downloaded file
-    os.remove(OUI_FILE)
-
-    print("Done")
+    end_steps(OUI_FILE)

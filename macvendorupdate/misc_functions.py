@@ -1,7 +1,7 @@
 from typing import IO
 import urllib.request as urllib
 import sys
-
+import os
 
 def dlProgress(count, blockSize, totalSize):
     """
@@ -20,10 +20,9 @@ def downloadFile(url: str, file_name: str):
             url {str}: Url to search the file
             file_name {str}: Name of the file to download
     """
-    download_url = url+file_name
 
-    print("Downloading from", download_url)
-    urllib.urlretrieve(download_url, file_name, reporthook=dlProgress)
+    print("Downloading from", url+file_name)
+    urllib.urlretrieve(url+file_name, file_name, reporthook=dlProgress)
 
 
 def openPythonFile(file_name: str):
@@ -35,8 +34,8 @@ def openPythonFile(file_name: str):
         Args:
             file_name {str}: name of the file, no extension
 
-        Return:
-            python_file {IO}: file object
+        Returns:
+            IO: file object
     """
     python_file = open(file_name + '.py', 'w')
     python_file.write('# -*- coding: utf-8 -*-\noui = {\n')
@@ -69,9 +68,9 @@ def getValuesFromLine(line_to_split: bytes):
         Args:
             line_to_split {bytes}: line to split
 
-        Return:
-            v1 {str}: mac value, first element of split
-            v2 {str}: vendor value, second element of split
+        Returns:
+            str: mac value, first element of split
+            str: vendor value, second element of split
     """
 
     try:
@@ -80,3 +79,36 @@ def getValuesFromLine(line_to_split: bytes):
         v1 = v2 = ''
 
     return v1, v2
+
+def strip_and_concat(mac, vendor, python_option=True):
+    """
+        Creates single string depending on the selected mode.
+
+        TODO: Make it simpler without the python_option flag
+
+        Args:
+            mac {str}: mac address
+            vendor {str}: vendor string
+            python_option {bool}: default True. Flag to choose if
+                python mode selected or mysql
+
+        Returns:
+            str: concat string with the selected format
+    """
+    if(python_option):
+        string = '\t"%s": ' % mac.strip().replace("-", ":").lower()
+        string += '"%s",\n' % vendor.strip().replace("'", "`")
+    else:
+        string = "'%s'," % mac.strip().replace("-", ":").lower()
+        string += "'%s'" % vendor.strip().replace("'", "`")
+
+    return string
+
+
+def end_steps(file_to_remove):
+    # Remove temporal file
+    print("\nRemoving temportal file")
+    os.remove(file_to_remove)
+
+    print("Done!")
+    print("Thanks, see you soon!")

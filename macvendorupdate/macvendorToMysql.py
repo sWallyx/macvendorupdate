@@ -1,10 +1,13 @@
 import re
-import sys
-import mysql.connector
-import os
 
-from modules.database import Database
-from misc_functions import downloadFile, getValuesFromLine
+from modules.database_settings import Database_settings
+from modules.database_actions import Database_actions
+from misc_functions import (
+    downloadFile,
+    getValuesFromLine,
+    strip_and_concat,
+    end_steps
+)
 
 from global_values import OUI_FILE, OUI_URL
 
@@ -16,26 +19,20 @@ def updateMysql():
         NOTE: Read README.md to know the needed table structure
     """
     # create database_config object
-    database_config = Database()
+    database_config = Database_settings()
 
     # ask for database config
     database_config.ask_for_setup()
 
     # test db connection
-    try:
-        conn = mysql.connector.connect(
-            host=database_config.db_host,
-            database=database_config.db_name,
-            user=database_config.db_user,
-            password=database_config.db_pass
-        )
-    except mysql.connector.Error:
-        sys.exit("I am unable to connect to the database, does it really exist.")
+    conn = database_config.check_db_connection()
+
+    # create object for database actions
+    database_action = Database_actions(conn)
 
     # download oui.txt
     downloadFile(OUI_URL, OUI_FILE)
 
-    cur = conn.cursor()
     # parsing oui.txt data
     with open(OUI_FILE) as infile:
         for line in infile:
@@ -46,22 +43,11 @@ def updateMysql():
                     sql = "INSERT INTO mac_vendors "
                     sql += "(oui,vendor) "
                     sql += "VALUES ("
-                    sql += "'%s'," % mac.strip().replace("-", ":").lower()
-                    sql += "'%s'" % vendor.strip().replace("'", "`")
+                    sql += strip_and_concat(mac, vendor, False)
                     sql += ")"
-                    print(sql)
-                    try:
-                        cur.execute(sql)
-                        conn.commit()
-                    except mysql.connector.Error as err:
-                        print("Something went wrong: {}".format(err))
 
-    cur.close()
-    conn.close()
+                    database_action.execute_query(sql)
 
-    # Remove temporal file
-    print("\nRemoving temportal file")
-    # Remove downloaded file
-    os.remove(OUI_FILE)
+    database_action.close_database()
 
-    print("Done")
+    end_steps(OUI_FILE)
