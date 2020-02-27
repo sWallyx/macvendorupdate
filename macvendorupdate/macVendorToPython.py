@@ -1,6 +1,5 @@
 from typing import IO
 import re
-import os
 
 from misc_functions import(
     downloadFile,
@@ -29,7 +28,7 @@ def writeToFile(file_name: str, file: IO):
 
                 n = '\t"%s": ' % mac.strip().replace("-", ":").lower()
                 n += '"%s",\n' % vendor.strip().replace("'", "`")
-                
+
                 file.write(n)
 
 

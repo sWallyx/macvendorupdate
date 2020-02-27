@@ -1,5 +1,4 @@
 import re
-import os
 
 from modules.database_settings import Database_settings
 from modules.database_actions import Database_actions
