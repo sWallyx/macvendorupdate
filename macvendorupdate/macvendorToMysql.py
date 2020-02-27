@@ -1,8 +1,8 @@
 import re
-import mysql.connector
 import os
 
 from modules.database_settings import Database_settings
+from modules.database_actions import Database_actions
 from misc_functions import downloadFile, getValuesFromLine
 
 from global_values import OUI_FILE, OUI_URL
@@ -23,8 +23,8 @@ def updateMysql():
     # test db connection
     conn = database_config.check_db_connection()
 
-    # get cursor
-    cur = conn.cursor()
+    # create object for database actions
+    database_action = Database_actions(conn)
 
     # download oui.txt
     downloadFile(OUI_URL, OUI_FILE)
@@ -43,18 +43,12 @@ def updateMysql():
                     sql += "'%s'" % vendor.strip().replace("'", "`")
                     sql += ")"
 
-                    try:
-                        cur.execute(sql)
-                        conn.commit()
-                    except mysql.connector.Error as err:
-                        print("Something went wrong: {}".format(err))
+                    database_action.execute_query(sql)
 
-    cur.close()
-    conn.close()
+    database_action.close_database()
 
     # Remove temporal file
     print("\nRemoving temportal file")
-    # Remove downloaded file
     os.remove(OUI_FILE)
 
     print("Done!")
