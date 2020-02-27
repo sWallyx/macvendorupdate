@@ -34,8 +34,8 @@ def openPythonFile(file_name: str):
         Args:
             file_name {str}: name of the file, no extension
 
-        Return:
-            python_file {IO}: file object
+        Returns:
+            IO: file object
     """
     python_file = open(file_name + '.py', 'w')
     python_file.write('# -*- coding: utf-8 -*-\noui = {\n')
@@ -68,9 +68,9 @@ def getValuesFromLine(line_to_split: bytes):
         Args:
             line_to_split {bytes}: line to split
 
-        Return:
-            v1 {str}: mac value, first element of split
-            v2 {str}: vendor value, second element of split
+        Returns:
+            str: mac value, first element of split
+            str: vendor value, second element of split
     """
 
     try:

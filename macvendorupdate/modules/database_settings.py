@@ -31,6 +31,9 @@ class Database_settings():
             If not shows message and quits.
 
             TODO: Make it a loop.
+
+            Returns:
+                MySQLConnection: Object with the MySQL connection object.
         """
         try:
             conn = mysql.connector.connect(
