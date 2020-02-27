@@ -1,5 +1,4 @@
 import re
-import sys
 import mysql.connector
 import os
 
