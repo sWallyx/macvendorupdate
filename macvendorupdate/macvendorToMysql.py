@@ -42,7 +42,7 @@ def updateMysql():
                     sql += "'%s'," % mac.strip().replace("-", ":").lower()
                     sql += "'%s'" % vendor.strip().replace("'", "`")
                     sql += ")"
-                    
+
                     try:
                         cur.execute(sql)
                         conn.commit()
@@ -57,4 +57,5 @@ def updateMysql():
     # Remove downloaded file
     os.remove(OUI_FILE)
 
-    print("Done")
+    print("Done!")
+    print("Thanks, see you soon!")
