@@ -22,15 +22,7 @@ def updateMysql():
     database_config.ask_for_setup()
 
     # test db connection
-    try:
-        conn = mysql.connector.connect(
-            host=database_config.db_host,
-            database=database_config.db_name,
-            user=database_config.db_user,
-            password=database_config.db_pass
-        )
-    except mysql.connector.Error:
-        sys.exit("I am unable to connect to the database, does it really exist.")
+    conn = database_config.check_db_connection()
 
     # download oui.txt
     downloadFile(OUI_URL, OUI_FILE)
