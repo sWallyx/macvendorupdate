@@ -42,7 +42,7 @@ def updateMysql():
                     sql += "'%s'," % mac.strip().replace("-", ":").lower()
                     sql += "'%s'" % vendor.strip().replace("'", "`")
                     sql += ")"
-                    print(sql)
+                    
                     try:
                         cur.execute(sql)
                         conn.commit()
