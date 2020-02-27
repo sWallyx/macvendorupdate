@@ -3,7 +3,7 @@ import mysql.connector
 import sys
 
 
-class Database():
+class Database_settings():
 
     def __init__(self):
         self.db_host = None

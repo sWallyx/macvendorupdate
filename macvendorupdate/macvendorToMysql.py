@@ -3,7 +3,7 @@ import sys
 import mysql.connector
 import os
 
-from modules.database import Database
+from modules.database_settings import Database_settings
 from misc_functions import downloadFile, getValuesFromLine
 
 from global_values import OUI_FILE, OUI_URL
@@ -16,7 +16,7 @@ def updateMysql():
         NOTE: Read README.md to know the needed table structure
     """
     # create database_config object
-    database_config = Database()
+    database_config = Database_settings()
 
     # ask for database config
     database_config.ask_for_setup()
