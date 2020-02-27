@@ -1,6 +1,4 @@
-from getpass import getpass
 import mysql.connector
-import sys
 
 
 class Database_actions():
