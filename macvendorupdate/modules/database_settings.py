@@ -2,6 +2,7 @@ from getpass import getpass
 import mysql.connector
 import sys
 
+from global_values import MYSQL_ERROR_MESSAGES
 
 class Database_settings():
 
@@ -42,9 +43,8 @@ class Database_settings():
                 user=self.db_user,
                 password=self.db_pass
             )
-        except mysql.connector.Error:
-            sys.exit(
-                "I am unable to connect to the database, does it really exist."
-            )
+        except mysql.connector.Error as err:
+            sys.exit(MYSQL_ERROR_MESSAGES[err.errno])
+
 
         return conn
