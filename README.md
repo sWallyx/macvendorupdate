@@ -68,12 +68,31 @@ ALTER TABLE mac_vendors
 
 ## Requisites
 
+The application is made for Python 3 or higher. Check your version with `python -V`
+
 To install the requisites you can run:
 
 ```
 python setup.py install
 ```
 
+## Know errors
+
+Some users had problems installing because of the permisions. You can create a virtual enviroment for this application with (you need to have `venv` installed):
+
+``` bash
+python3 -m venv env     # Create virtual env
+source env/bin/activate # Activates the enviroment
+```
+
+Quit the enviroment with `deactivate`
+
+# ToDo list
+
+* [ ] Option for local file, and exit download
+* [ ] Option to update database and remove the need of empty database
+* [ ] Automatize virtual enviroment creation
+* [ ] Add venv to setup file
 
 License
 ----
