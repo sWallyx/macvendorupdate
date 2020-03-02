@@ -15,8 +15,9 @@ python macvendorupdate --help
 Usage: macvendorupdate [OPTIONS]
 
 Options:
-  -p, --python  Updates/generates python oui file with mac vendor info
-  -m, --mysql   Writes the infor of the mac vendor into the sql database
+  -p, --python    Updates/generates python oui file with mac vendor info
+  -m, --mysql     Writes the infor of the mac vendor into the sql database
+  -d, --download  Just download the oui.txt file and save it in the main folder
   --help        Show this message and exit.
 ```
 
