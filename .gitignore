@@ -57,8 +57,9 @@ docs/_build/
 # PyBuilder
 target/
 
-# DS_Store
+# DS_Store and develop files
 .DS_Store
+DEVELOPMENT.md
 
 # Visual Code folder
 .vscode
