@@ -1,5 +1,7 @@
 # Mac Vendor Update
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e819d35555ad478f8565df0f883833a4)](https://app.codacy.com/manual/mikelsmartinez/macvendorupdate?utm_source=github.com&utm_medium=referral&utm_content=sWallyx/macvendorupdate&utm_campaign=Badge_Grade_Dashboard)
+
 Diferent ways to update the mac vendor files, using the official oui.txt from [standards-oui.ieee.org](http://standards-oui.ieee.org/oui.txt). The files downloads the file and saves it in diferent ways and places for example:
 
   - Python file
