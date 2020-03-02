@@ -1,6 +1,6 @@
 import mysql.connector
 
-from database_settings import MYSQL_ERROR_MESSAGES
+from .database_settings import MYSQL_ERROR_MESSAGES
 
 
 class Database_actions():
