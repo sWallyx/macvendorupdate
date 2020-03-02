@@ -3,6 +3,9 @@ import urllib.request as urllib
 import sys
 import os
 
+from global_values import OUI_FILE, OUI_URL, OUTPUT_FILE_NAME
+
+
 def dlProgress(count, blockSize, totalSize):
     """
         Creates a progress bar to indicate the download progress
@@ -12,7 +15,7 @@ def dlProgress(count, blockSize, totalSize):
     sys.stdout.flush()
 
 
-def downloadFile(url: str, file_name: str):
+def downloadFile(url: str = OUI_URL, file_name: str = OUI_FILE):
     """
         Downloads the given file from the given URL
 
@@ -79,6 +82,7 @@ def getValuesFromLine(line_to_split: bytes):
         v1 = v2 = ''
 
     return v1, v2
+
 
 def strip_and_concat(mac, vendor, python_option=True):
     """

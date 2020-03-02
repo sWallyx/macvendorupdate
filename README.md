@@ -4,6 +4,7 @@ Diferent ways to update the mac vendor files, using the official oui.txt from [s
 
   - Python file
   - MySQL database
+  - Download txt file
   - ...
 
 # Usage
@@ -15,29 +16,28 @@ python macvendorupdate --help
 Usage: macvendorupdate [OPTIONS]
 
 Options:
-  -p, --python  Updates/generates python oui file with mac vendor info
-  -m, --mysql   Writes the infor of the mac vendor into the sql database
+  -p, --python    Updates/generates python oui file with mac vendor info
+  -m, --mysql     Writes the infor of the mac vendor into the sql database
+  -d, --download  Just download the oui.txt file and save it in the main folder
   --help        Show this message and exit.
 ```
 
-### Python update
-
-To write or update a python file called oui.py
+For example, to select the python option we can use any of this commands:
 
 ```
 python macvendorupdate -p
 ```
 
-### Mysql update
 
 ```
-python macvendorupdate -m
+python macvendorupdate --python
 ```
 
-It will ask for the database info
+## MySQL Data Base Structure
 
-The structure of the table it creates/needs is:
-```
+Fot the MySQL data base option it will need an exact database, you can create it with the following SQL Query: 
+
+``` sql
 SQL minimal table needed by script:
 -- Table: mac_vendors
 -- DROP TABLE mac_vendors;

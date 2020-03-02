@@ -3,12 +3,14 @@ import click
 from modules.default_help import DefaultHelp
 from macvendorToMysql import updateMysql
 from macVendorToPython import updatePython
+from misc_functions import downloadFile
 
 
 @click.command(cls=DefaultHelp)
 @click.option('-p', '--python', is_flag=True, help='Updates/generates python oui file with mac vendor info')
 @click.option('-m', '--mysql', is_flag=True, help='Writes the infor of the mac vendor into the sql database')
-def main(python=False, mysql=False):
+@click.option('-d', '--download', is_flag=True, help='Just download the oui.txt file and save it in the main folder')
+def main(python=False, mysql=False, download=False):
     """
         Gets all the mac address from standards.ieee.org and creates a python
         file or inserts the information into the database. All depends in what
@@ -28,6 +30,9 @@ def main(python=False, mysql=False):
 
     elif(mysql):
         updateMysql()
+
+    elif(download):
+        downloadFile()
 
 
 if __name__ == '__main__':
