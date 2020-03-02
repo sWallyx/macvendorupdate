@@ -87,6 +87,39 @@ source env/bin/activate # Activates the enviroment
 
 Quit the enviroment with `deactivate`
 
+### File download error
+
+Some users had problems downloading the file from [standards-oui.ieee.org](http://standards-oui.ieee.org/oui.txt).
+
+``` Python
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/urllib/request.py", line 1318, in do_open
+    encode_chunked=req.has_header('Transfer-encoding'))
+  File "/usr/lib/python3.6/http/client.py", line 1254, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/lib/python3.6/http/client.py", line 1300, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.6/http/client.py", line 1249, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.6/http/client.py", line 1036, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.6/http/client.py", line 974, in send
+    self.connect()
+  File "/usr/lib/python3.6/http/client.py", line 1415, in connect
+    server_hostname=server_hostname)
+  File "/usr/lib/python3.6/ssl.py", line 407, in wrap_socket
+    _context=self, _session=session)
+  File "/usr/lib/python3.6/ssl.py", line 817, in __init__
+    self.do_handshake()
+  File "/usr/lib/python3.6/ssl.py", line 1077, in do_handshake
+    self._sslobj.do_handshake()
+  File "/usr/lib/python3.6/ssl.py", line 689, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:852)
+```
+
+This is the error they get. We are currently working in this issue. Please create an issue with you OS and Python version.
+
 ## FAQ
 
 ### Do I have Python 3?
