@@ -1,5 +1,7 @@
 import mysql.connector
 
+from database_settings import MYSQL_ERROR_MESSAGES
+
 
 class Database_actions():
     """
@@ -23,7 +25,8 @@ class Database_actions():
             self.cur.execute(sql_query)
             self.conn.commit()
         except mysql.connector.Error as err:
-            print("Something went wrong: {}".format(err))
+            print("Something went wrong: {}".format(
+                MYSQL_ERROR_MESSAGES[err.errno]))
 
     def close_database(self):
         """

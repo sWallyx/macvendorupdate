@@ -3,6 +3,16 @@ import mysql.connector
 import sys
 
 
+MYSQL_ERROR_MESSAGES = {
+    1036: "I don't know how to write in here, I can only read this table",
+    1037: "Server is about to explode, no memory left, restart it",
+    1045: "I did not get access with, do I have the correct ID? Check user and pass",
+    1049: "For real? That database is not in here. Stop giving me bad directions",
+    1051: "There is no such table. Please don't make fun of me",
+    2003: "Where is it? I cant find the database on that host",
+}
+
+
 class Database_settings():
 
     def __init__(self):
@@ -30,7 +40,8 @@ class Database_settings():
             Check if the connection is OK to continue.
             If not shows message and quits.
 
-            TODO: Make it a loop.
+            TODO: Make it a loop. If connection fails, ask for new
+            credentials.
 
             Returns:
                 MySQLConnection: Object with the MySQL connection object.
@@ -42,9 +53,7 @@ class Database_settings():
                 user=self.db_user,
                 password=self.db_pass
             )
-        except mysql.connector.Error:
-            sys.exit(
-                "I am unable to connect to the database, does it really exist."
-            )
+        except mysql.connector.Error as err:
+            sys.exit(MYSQL_ERROR_MESSAGES[err.errno])
 
         return conn
