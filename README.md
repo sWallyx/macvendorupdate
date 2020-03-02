@@ -68,15 +68,15 @@ ALTER TABLE mac_vendors
 
 ## Requisites
 
-The application is made for Python 3 or higher. Check your version with `python -V`
-
-To install the requisites you can run:
+The application is made for Python 3 or higher. To install the requisites you can run:
 
 ```
 python setup.py install
 ```
 
 ## Know errors
+
+### Permision error
 
 Some users had problems installing because of the permisions. You can create a virtual enviroment for this application with (you need to have `venv` installed):
 
@@ -87,12 +87,26 @@ source env/bin/activate # Activates the enviroment
 
 Quit the enviroment with `deactivate`
 
+## FAQ
+
+### Do I have Python 3?
+
+To know if you have Python 3 in the machine run the command: `python -V`
+
+_Note:_ Some machines may have the `python` command for Python 2 and `python3 `command for Python 3
+
+
+### How can upgrade to Python 3?
+
+If you have Linux follow [this guide](https://jcutrer.com/linux/upgrade-python37-ubuntu1810).
+
+
 # ToDo list
 
 * [ ] Option for local file, and exit download
 * [ ] Option to update database and remove the need of empty database
 * [ ] Automatize virtual enviroment creation
-* [ ] Add venv to setup file
+* [ ] Create new install bash script to start the enviroment also
 
 License
 ----
