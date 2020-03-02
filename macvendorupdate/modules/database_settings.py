@@ -40,7 +40,8 @@ class Database_settings():
             Check if the connection is OK to continue.
             If not shows message and quits.
 
-            TODO: Make it a loop.
+            TODO: Make it a loop. If connection fails, ask for new
+            credentials.
 
             Returns:
                 MySQLConnection: Object with the MySQL connection object.
