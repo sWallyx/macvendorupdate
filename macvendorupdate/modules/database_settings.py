@@ -12,6 +12,7 @@ MYSQL_ERROR_MESSAGES = {
     2003: "Where is it? I cant find the database on that host",
 }
 
+
 class Database_settings():
 
     def __init__(self):
@@ -53,6 +54,5 @@ class Database_settings():
             )
         except mysql.connector.Error as err:
             sys.exit(MYSQL_ERROR_MESSAGES[err.errno])
-
 
         return conn
