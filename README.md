@@ -131,7 +131,8 @@ _Note:_ Some machines may have the `python` command for Python 2 and `python3 `c
 
 ### How can upgrade to Python 3?
 
-If you have Linux follow [this guide](https://jcutrer.com/linux/upgrade-python37-ubuntu1810).
+* For linux: [This guide](https://jcutrer.com/linux/upgrade-python37-ubuntu1810).
+* For Mac OS: [This guide](https://osxdaily.com/2018/06/13/how-install-update-python-3x-mac/).
 
 
 # ToDo list
