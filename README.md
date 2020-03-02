@@ -4,6 +4,7 @@ Diferent ways to update the mac vendor files, using the official oui.txt from [s
 
   - Python file
   - MySQL database
+  - Download txt file
   - ...
 
 # Usage
