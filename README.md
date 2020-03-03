@@ -87,7 +87,7 @@ _Note:_ It may ask for administrator password to install the virtualenv package 
 
 ## Know errors
 
-### Permision error
+### Permision error (FIXED with new install)
 
 Some users had problems installing because of the permisions. You can create a virtual enviroment for this application with (you need to have `venv` installed):
 
@@ -148,10 +148,10 @@ _Note:_ Some machines may have the `python` command for Python 2 and `python3 `c
 
 # ToDo list
 
-* [ ] Option for local file, and exit download
+* [x] Option for local file, and exit download
+* [x] Automatize virtual enviroment creation
+* [x] Create new install bash script to start the enviroment also
 * [ ] Option to update database and remove the need of empty database
-* [ ] Automatize virtual enviroment creation
-* [ ] Create new install bash script to start the enviroment also
 
 License
 ----
