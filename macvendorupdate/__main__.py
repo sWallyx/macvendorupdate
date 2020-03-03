@@ -1,3 +1,4 @@
+#!/path/to/project/env/bin/python
 import click
 
 from modules.default_help import DefaultHelp

@@ -68,15 +68,26 @@ ALTER TABLE mac_vendors
 
 ## Requisites
 
-The application is made for Python 3 or higher. To install the requisites you can run:
+The application is made for Python 3 or higher. The installation script will make sure everything is ready, it will install all the packages on a virtual enviroment.
 
+## How to install
+
+After downloading the application, make the script executable:
+
+``` bash
+chmod u+x install.sh
 ```
-python setup.py install
+
+Run the install script
 ```
+./install.sh
+```
+
+_Note:_ It may ask for administrator password to install the virtualenv package if not installed.
 
 ## Know errors
 
-### Permision error
+### Permision error (FIXED with new install)
 
 Some users had problems installing because of the permisions. You can create a virtual enviroment for this application with (you need to have `venv` installed):
 
@@ -137,10 +148,10 @@ _Note:_ Some machines may have the `python` command for Python 2 and `python3 `c
 
 # ToDo list
 
-* [ ] Option for local file, and exit download
+* [x] Option for local file, and exit download
+* [x] Automatize virtual enviroment creation
+* [x] Create new install bash script to start the enviroment also
 * [ ] Option to update database and remove the need of empty database
-* [ ] Automatize virtual enviroment creation
-* [ ] Create new install bash script to start the enviroment also
 
 License
 ----
