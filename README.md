@@ -152,6 +152,7 @@ _Note:_ Some machines may have the `python` command for Python 2 and `python3 `c
 * [x] Automatize virtual enviroment creation
 * [x] Create new install bash script to start the enviroment also
 * [ ] Option to update database and remove the need of empty database
+* [ ] Bash Script for application update
 
 License
 ----
