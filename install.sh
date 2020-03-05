@@ -1,5 +1,10 @@
 #!/bin/bash
 
+correct_python_message(){
+    echo "true";
+    echo "[OK] -- Python 3 installed"
+}
+
 create_virtual_env(){
     python3 setup.py install
 }
@@ -15,8 +20,6 @@ echo "Making Initial checks:"
 
 # Check if Python 3 is installed
 if [[ "$(python3 -V)" =~ "Python 3" ]]; then
-    echo "true";
-    echo "[OK] -- Python 3 installed"
     create_virtual_env
 else
     not_version_error
