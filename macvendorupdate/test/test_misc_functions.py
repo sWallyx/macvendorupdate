@@ -1,3 +1,7 @@
+#!/env/bin/python
+"""
+    Test functions for pytest
+"""
 import pytest
 
 from macvendorupdate.misc_functions import get_values_from_line

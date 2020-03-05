@@ -110,6 +110,10 @@ def strip_and_concat(mac, vendor, python_option=True):
 
 
 def end_steps(file_to_remove):
+    """
+        Step to end the application, by removing the file and
+        showing a message.
+    """
     # Remove temporal file
     print("\nRemoving temportal file")
     os.remove(file_to_remove)
