@@ -78,7 +78,7 @@ def get_values_from_line(line_to_split: bytes):
 
     try:
         first_strip, second_strip = line_to_split.strip().split("(hex)")
-    except Exception:
+    except ValueError:
         first_strip = second_strip = ''
 
     return first_strip, second_strip
