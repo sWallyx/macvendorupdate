@@ -3,14 +3,14 @@ import urllib.request as urllib
 import sys
 import os
 
-from global_values import OUI_FILE, OUI_URL, OUTPUT_FILE_NAME
+from global_values import OUI_FILE, OUI_URL
 
 
-def dlProgress(count, blockSize, totalSize):
+def download_progress(count, block_size, total_size):
     """
         Creates a progress bar to indicate the download progress
     """
-    percent = int(count*blockSize*100/totalSize)
+    percent = int(count*block_size*100/total_size)
     sys.stdout.write("\r%d%%" % percent)
     sys.stdout.flush()
 
@@ -25,7 +25,7 @@ def download_file(url: str = OUI_URL, file_name: str = OUI_FILE):
     """
 
     print("Downloading from", url+file_name)
-    urllib.urlretrieve(url+file_name, file_name, reporthook=dlProgress)
+    urllib.urlretrieve(url+file_name, file_name, reporthook=download_progress)
 
 
 def open_python_file(file_name: str):

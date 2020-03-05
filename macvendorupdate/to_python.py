@@ -1,3 +1,6 @@
+"""
+    This file contains the functions for the option python
+"""
 from typing import IO
 import re
 
@@ -13,7 +16,7 @@ from misc_functions import(
 from global_values import OUI_FILE, OUI_URL, OUTPUT_FILE_NAME
 
 
-def writeToFile(file_name: str, file: IO):
+def write_to_file(file_name: str, file: IO):
     """
         Opens file given by name, and writes the hex line on the final file.
 
@@ -21,21 +24,18 @@ def writeToFile(file_name: str, file: IO):
             file_name {str}: name of the file
             file {IO}: file object to write on
     """
-    # parsing oui.txt data
+
     with open(file_name) as infile:
         for line in infile:
             if re.search("(hex)", line):
                 mac, vendor = get_values_from_line(line)
 
-                # n = '\t"%s": ' % mac.strip().replace("-", ":").lower()
-                # n += '"%s",\n' % vendor.strip().replace("'", "`")
+                record = strip_and_concat(mac, vendor)
 
-                n = strip_and_concat(mac, vendor)
-
-                file.write(n)
+                file.write(record)
 
 
-def updatePython():
+def update_python():
     """
         Downloads the file to process and generates a Python file (oui.py)
         with a JSON object with the MAC address and vendors.
@@ -43,10 +43,10 @@ def updatePython():
 
     download_file(OUI_URL, OUI_FILE)
 
-    f = open_python_file(OUTPUT_FILE_NAME)
+    file_ = open_python_file(OUTPUT_FILE_NAME)
 
-    writeToFile(OUI_FILE, f)
+    write_to_file(OUI_FILE, file_)
 
-    close_python_file(f)
+    close_python_file(file_)
 
     end_steps(OUI_FILE)

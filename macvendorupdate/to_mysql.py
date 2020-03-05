@@ -1,3 +1,6 @@
+"""
+    This file contains the functions for the option mysql
+"""
 import re
 
 from modules.database_settings import DatabaseSettings
@@ -12,7 +15,7 @@ from misc_functions import (
 from global_values import OUI_FILE, OUI_URL
 
 
-def updateMysql():
+def update_mysql():
     """
         Writes the info from the file into the MySQL table.
 

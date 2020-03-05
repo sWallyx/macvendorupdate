@@ -2,8 +2,8 @@
 import click
 
 from modules.default_help import DefaultHelp
-from to_mysql import updateMysql
-from to_python import updatePython
+from to_mysql import update_mysql
+from to_python import update_python
 from misc_functions import download_file
 
 
@@ -42,10 +42,10 @@ def main(python=False, mysql=False, download=False):
      ''')
 
     if python:
-        updatePython()
+        update_python()
 
     elif mysql:
-        updateMysql()
+        update_mysql()
 
     elif download:
         download_file()
