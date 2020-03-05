@@ -1,7 +1,7 @@
 import re
 
-from modules.database_settings import Database_settings
-from modules.database_actions import Database_actions
+from modules.database_settings import DatabaseSettings
+from modules.database_actions import DatabaseActions
 from misc_functions import (
     downloadFile,
     getValuesFromLine,
@@ -19,7 +19,7 @@ def updateMysql():
         NOTE: Read README.md to know the needed table structure
     """
     # create database_config object
-    database_config = Database_settings()
+    database_config = DatabaseSettings()
 
     # ask for database config
     database_config.ask_for_setup()
@@ -28,7 +28,7 @@ def updateMysql():
     conn = database_config.check_db_connection()
 
     # create object for database actions
-    database_action = Database_actions(conn)
+    database_action = DatabaseActions(conn)
 
     # download oui.txt
     downloadFile(OUI_URL, OUI_FILE)

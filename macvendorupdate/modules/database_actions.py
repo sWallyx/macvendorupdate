@@ -3,7 +3,7 @@ import mysql.connector
 from .database_settings import MYSQL_ERROR_MESSAGES
 
 
-class Database_actions():
+class DatabaseActions():
     """
         Object to hold all the actions that the database will
         need to do.

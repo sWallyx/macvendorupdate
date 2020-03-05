@@ -1,7 +1,6 @@
-from getpass import getpass
-import mysql.connector
 import sys
-
+import mysql.connector
+from getpass import getpass
 
 MYSQL_ERROR_MESSAGES = {
     1036: "I don't know how to write in here, I can only read this table",
@@ -13,7 +12,7 @@ MYSQL_ERROR_MESSAGES = {
 }
 
 
-class Database_settings():
+class DatabaseSettings():
 
     def __init__(self):
         self.db_host = None
