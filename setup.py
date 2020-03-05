@@ -7,7 +7,7 @@ setup(
     author='sWallyx',
     keywords=['mac address', 'wifi', 'brands', 'people', 'oui', 'devices', 'python', 'mysql', 'download'],
     classifiers=[],
-    install_requires=["click", "mysql-connector-python", "pytest"],
+    install_requires=["click", "mysql-connector-python"],
     setup_requires=[],
     tests_require=[],
     packages=find_packages(),

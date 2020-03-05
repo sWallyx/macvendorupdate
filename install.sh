@@ -1,11 +1,7 @@
 #!/bin/bash
 
 create_virtual_env(){
-    sudo pip3 install virtualenv
-    python3 -m virtualenv env
-    source env/bin/activate
     python3 setup.py install
-    deactivate
 }
 
 not_version_error(){
