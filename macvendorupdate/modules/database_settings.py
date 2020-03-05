@@ -1,6 +1,7 @@
 import sys
-import mysql.connector
 from getpass import getpass
+
+import mysql.connector
 
 MYSQL_ERROR_MESSAGES = {
     1036: "I don't know how to write in here, I can only read this table",

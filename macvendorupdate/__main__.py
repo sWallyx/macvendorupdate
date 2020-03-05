@@ -4,7 +4,7 @@ import click
 from modules.default_help import DefaultHelp
 from to_mysql import updateMysql
 from to_python import updatePython
-from misc_functions import downloadFile
+from misc_functions import download_file
 
 
 @click.command(cls=DefaultHelp)
@@ -48,7 +48,7 @@ def main(python=False, mysql=False, download=False):
         updateMysql()
 
     elif download:
-        downloadFile()
+        download_file()
 
 
 if __name__ == '__main__':

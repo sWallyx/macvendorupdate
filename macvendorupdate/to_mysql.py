@@ -3,8 +3,8 @@ import re
 from modules.database_settings import DatabaseSettings
 from modules.database_actions import DatabaseActions
 from misc_functions import (
-    downloadFile,
-    getValuesFromLine,
+    download_file,
+    get_values_from_line,
     strip_and_concat,
     end_steps
 )
@@ -31,13 +31,13 @@ def updateMysql():
     database_action = DatabaseActions(conn)
 
     # download oui.txt
-    downloadFile(OUI_URL, OUI_FILE)
+    download_file(OUI_URL, OUI_FILE)
 
     # parsing oui.txt data
     with open(OUI_FILE) as infile:
         for line in infile:
             if re.search("(hex)", line):
-                mac, vendor = getValuesFromLine(line)
+                mac, vendor = get_values_from_line(line)
 
                 if mac != '' and vendor != '':
                     sql = "INSERT INTO mac_vendors "

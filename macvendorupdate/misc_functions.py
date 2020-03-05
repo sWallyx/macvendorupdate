@@ -15,7 +15,7 @@ def dlProgress(count, blockSize, totalSize):
     sys.stdout.flush()
 
 
-def downloadFile(url: str = OUI_URL, file_name: str = OUI_FILE):
+def download_file(url: str = OUI_URL, file_name: str = OUI_FILE):
     """
         Downloads the given file from the given URL
 
@@ -28,7 +28,7 @@ def downloadFile(url: str = OUI_URL, file_name: str = OUI_FILE):
     urllib.urlretrieve(url+file_name, file_name, reporthook=dlProgress)
 
 
-def openPythonFile(file_name: str):
+def open_python_file(file_name: str):
     """
         Creates or opens the file if exists. And starts writing on it.
 
@@ -46,7 +46,7 @@ def openPythonFile(file_name: str):
     return python_file
 
 
-def closePythonFile(python_file: IO):
+def close_python_file(python_file: IO):
     """
         Closes the file, closing first the object inside it.
 
@@ -62,7 +62,7 @@ def closePythonFile(python_file: IO):
     print("\noui.py updated")
 
 
-def getValuesFromLine(line_to_split: bytes):
+def get_values_from_line(line_to_split: bytes):
     """
         Splits the line into 2 values if possible.
 
@@ -77,11 +77,11 @@ def getValuesFromLine(line_to_split: bytes):
     """
 
     try:
-        v1, v2 = line_to_split.strip().split("(hex)")
+        first_strip, second_strip = line_to_split.strip().split("(hex)")
     except Exception:
-        v1 = v2 = ''
+        first_strip = second_strip = ''
 
-    return v1, v2
+    return first_strip, second_strip
 
 
 def strip_and_concat(mac, vendor, python_option=True):
@@ -99,7 +99,7 @@ def strip_and_concat(mac, vendor, python_option=True):
         Returns:
             str: concat string with the selected format
     """
-    if(python_option):
+    if python_option:
         string = '\t"%s": ' % mac.strip().replace("-", ":").lower()
         string += '"%s",\n' % vendor.strip().replace("'", "`")
     else:

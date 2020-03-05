@@ -2,10 +2,10 @@ from typing import IO
 import re
 
 from misc_functions import(
-    downloadFile,
-    openPythonFile,
-    closePythonFile,
-    getValuesFromLine,
+    download_file,
+    open_python_file,
+    close_python_file,
+    get_values_from_line,
     strip_and_concat,
     end_steps
 )
@@ -25,7 +25,7 @@ def writeToFile(file_name: str, file: IO):
     with open(file_name) as infile:
         for line in infile:
             if re.search("(hex)", line):
-                mac, vendor = getValuesFromLine(line)
+                mac, vendor = get_values_from_line(line)
 
                 # n = '\t"%s": ' % mac.strip().replace("-", ":").lower()
                 # n += '"%s",\n' % vendor.strip().replace("'", "`")
@@ -41,12 +41,12 @@ def updatePython():
         with a JSON object with the MAC address and vendors.
     """
 
-    downloadFile(OUI_URL, OUI_FILE)
+    download_file(OUI_URL, OUI_FILE)
 
-    f = openPythonFile(OUTPUT_FILE_NAME)
+    f = open_python_file(OUTPUT_FILE_NAME)
 
     writeToFile(OUI_FILE, f)
 
-    closePythonFile(f)
+    close_python_file(f)
 
     end_steps(OUI_FILE)

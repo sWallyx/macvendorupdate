@@ -1,6 +1,6 @@
 import pytest
 
-from macvendorupdate.misc_functions import getValuesFromLine
+from macvendorupdate.misc_functions import get_values_from_line
 
 
 @pytest.mark.parametrize(
@@ -15,9 +15,9 @@ from macvendorupdate.misc_functions import getValuesFromLine
         "Rockwell Automation",
     )
 )
-def test_getValuesFromLine(complete_string, expected_mac, expected_vendor):
+def test_get_values_from_line(complete_string, expected_mac, expected_vendor):
 
-    mac, vendor = getValuesFromLine(complete_string)
+    mac, vendor = get_values_from_line(complete_string)
 
     assert mac == expected_mac
     assert vendor == expected_vendor
