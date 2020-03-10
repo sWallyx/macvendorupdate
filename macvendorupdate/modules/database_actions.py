@@ -29,7 +29,7 @@ class DatabaseActions():
 
     def close_database(self):
         """
-            Ends the conexion with the database
+            Ends the connection with the database
         """
         self.cur.close()
         self.conn.close()

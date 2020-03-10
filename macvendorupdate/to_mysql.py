@@ -37,8 +37,8 @@ def update_mysql():
     download_file(OUI_URL, OUI_FILE)
 
     # parsing oui.txt data
-    with open(OUI_FILE) as infile:
-        for line in infile:
+    with open(OUI_FILE) as in_file:
+        for line in in_file:
             if re.search("(hex)", line):
                 mac, vendor = get_values_from_line(line)
 

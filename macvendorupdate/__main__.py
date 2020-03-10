@@ -17,7 +17,7 @@ from macvendorupdate.misc_functions import download_file
     '-m',
     '--mysql',
     is_flag=True,
-    help='Writes the infor of the mac vendor into the sql database'
+    help='Writes the information of the mac vendor into the sql database'
 )
 @click.option(
     '-d',

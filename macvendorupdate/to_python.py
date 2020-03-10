@@ -25,8 +25,8 @@ def write_to_file(file_name: str, file: IO):
             file {IO}: file object to write on
     """
 
-    with open(file_name) as infile:
-        for line in infile:
+    with open(file_name) as in_file:
+        for line in in_file:
             if re.search("(hex)", line):
                 mac, vendor = get_values_from_line(line)
 
