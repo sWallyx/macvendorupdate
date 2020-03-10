@@ -4,7 +4,7 @@
 """
 import pytest
 
-from macvendorupdate.misc_functions import get_values_from_line, strip_and_concat
+from macvendorupdate.misc_functions import get_values_from_line, replace_and_concat
 
 
 @pytest.mark.parametrize(
@@ -51,5 +51,5 @@ def test_get_values_from_line(complete_string, expected_mac, expected_vendor):
         ),
     ]
 )
-def test_strip_and_concat(mac, vendor, python_option, expected_result):
-    assert expected_result == strip_and_concat(mac, vendor, python_option)
+def test_replace_and_concat(mac, vendor, python_option, expected_result):
+    assert expected_result == replace_and_concat(mac, vendor, python_option)

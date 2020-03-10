@@ -8,7 +8,7 @@ from macvendorupdate.modules.database_actions import DatabaseActions
 from macvendorupdate.misc_functions import (
     download_file,
     get_values_from_line,
-    strip_and_concat,
+    replace_and_concat,
     end_steps
 )
 
@@ -46,7 +46,7 @@ def update_mysql():
                     sql = "INSERT INTO mac_vendors "
                     sql += "(oui,vendor) "
                     sql += "VALUES ("
-                    sql += strip_and_concat(mac, vendor, False)
+                    sql += replace_and_concat(mac, vendor, False)
                     sql += ")"
 
                     database_action.execute_query(sql)

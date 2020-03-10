@@ -83,7 +83,7 @@ def get_values_from_line(line_to_split: bytes):
     return first_strip.strip(), second_strip.strip()
 
 
-def strip_and_concat(mac, vendor, python_option=True):
+def replace_and_concat(mac, vendor, python_option=True):
     """
         Creates single string depending on the selected mode.
 

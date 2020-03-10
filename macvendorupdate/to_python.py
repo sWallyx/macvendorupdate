@@ -9,7 +9,7 @@ from macvendorupdate.misc_functions import(
     open_python_file,
     close_python_file,
     get_values_from_line,
-    strip_and_concat,
+    replace_and_concat,
     end_steps
 )
 
@@ -30,7 +30,7 @@ def write_to_file(file_name: str, file: IO):
             if re.search("(hex)", line):
                 mac, vendor = get_values_from_line(line)
 
-                record = strip_and_concat(mac, vendor)
+                record = replace_and_concat(mac, vendor)
 
                 file.write(record)
 
