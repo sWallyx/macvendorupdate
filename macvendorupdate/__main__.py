@@ -1,11 +1,10 @@
 import click
 import subprocess
 
-from modules.default_help import DefaultHelp
-from to_mysql import update_mysql
-from to_python import update_python
-from misc_functions import download_file
-
+from macvendorupdate.modules.default_help import DefaultHelp
+from macvendorupdate.to_mysql import update_mysql
+from macvendorupdate.to_python import update_python
+from macvendorupdate.misc_functions import download_file
 
 @click.command(cls=DefaultHelp)
 @click.option(
@@ -51,7 +50,7 @@ def main(python=False, mysql=False, download=False):
         download_file()
 
 
-if __name__ == '__main__':    
+if __name__ == '__main__':
     main()
 
    

@@ -3,8 +3,7 @@ import urllib.request as urllib
 import sys
 import os
 
-from global_values import OUI_FILE, OUI_URL
-
+from macvendorupdate.global_values import OUI_FILE, OUI_URL
 
 def download_progress(count, block_size, total_size):
     """

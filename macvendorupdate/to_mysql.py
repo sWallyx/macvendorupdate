@@ -3,16 +3,16 @@
 """
 import re
 
-from modules.database_settings import DatabaseSettings
-from modules.database_actions import DatabaseActions
-from misc_functions import (
+from macvendorupdate.modules.database_settings import DatabaseSettings
+from macvendorupdate.modules.database_actions import DatabaseActions
+from macvendorupdate.misc_functions import (
     download_file,
     get_values_from_line,
     strip_and_concat,
     end_steps
 )
 
-from global_values import OUI_FILE, OUI_URL
+from macvendorupdate.global_values import OUI_FILE, OUI_URL
 
 
 def update_mysql():
