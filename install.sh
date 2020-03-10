@@ -15,12 +15,17 @@ not_version_error(){
     echo " - - - - - - - - - - - - - - - - - - - - - - - -";
     echo "Thanks, bye :)";
 }
+export_python(){
+    export PYTHONPATH="YOUR_PROJECT_ROOT_ABSOLUTE_PATH:$PYTHONPATH" 
+}
 
 echo "Making Initial checks:"
 
 # Check if Python 3 is installed
 if [[ "$(python3 -V)" =~ "Python 3" ]]; then
     create_virtual_env
+    export_python
 else
     not_version_error
 fi
+
