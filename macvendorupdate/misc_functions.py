@@ -5,6 +5,7 @@ import os
 
 from macvendorupdate.global_values import OUI_FILE, OUI_URL
 
+
 def download_progress(count, block_size, total_size):
     """
         Creates a progress bar to indicate the download progress
