@@ -13,11 +13,13 @@ from macvendorupdate.misc_functions import get_values_from_line
         "expected_mac",
         "expected_vendor",
     ),
-    (
+    [
+        (
         "08-61-95   (hex)		Rockwell Automation",
         "08-61-95",
         "Rockwell Automation",
-    )
+    ),
+    ]
 )
 def test_get_values_from_line(complete_string, expected_mac, expected_vendor):
 
