@@ -80,7 +80,7 @@ def get_values_from_line(line_to_split: bytes):
     except ValueError:
         first_strip = second_strip = ''
 
-    return first_strip, second_strip
+    return first_strip.strip(), second_strip.strip()
 
 
 def strip_and_concat(mac, vendor, python_option=True):
@@ -99,11 +99,11 @@ def strip_and_concat(mac, vendor, python_option=True):
             str: concat string with the selected format
     """
     if python_option:
-        string = '\t"%s": ' % mac.strip().replace("-", ":").lower()
-        string += '"%s",\n' % vendor.strip().replace("'", "`")
+        string = '\t"%s": ' % mac.replace("-", ":").lower()
+        string += '"%s",\n' % vendor.replace("'", "`")
     else:
-        string = "'%s'," % mac.strip().replace("-", ":").lower()
-        string += "'%s'" % vendor.strip().replace("'", "`")
+        string = "'%s'," % mac.replace("-", ":").lower()
+        string += "'%s'" % vendor.replace("'", "`")
 
     return string
 
