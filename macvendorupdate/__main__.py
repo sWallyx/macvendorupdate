@@ -1,12 +1,19 @@
 import click
 import subprocess
 
-from macvendorupdate.modules.default_help import DefaultHelp
-from macvendorupdate.to_mysql import update_mysql
-from macvendorupdate.to_python import update_python
-from macvendorupdate.misc_functions import download_file
+# pylint: disable = import-error
+from to_mysql import update_mysql
+from to_python import update_python
+from misc_functions import download_file
 
-@click.command(cls=DefaultHelp)
+MENU_OPTIONS = {
+    "1": (" Download File", download_file),
+    "2": (" Create Python set", update_python),
+    "3": (" Update MySQL Database", update_mysql),
+    "0": (" Quit", my_quit)
+}
+
+
 @click.option(
     '-p',
     '--python',
@@ -32,12 +39,12 @@ def main(python=False, mysql=False, download=False):
         is selected.
     """
     print(r'''
-    __  ___              _    __               __              __  __          __      __     
-   /  |/  /___ ______   | |  / /__  ____  ____/ /___  _____   / / / /___  ____/ /___ _/ /____ 
-  / /|_/ / __ `/ ___/   | | / / _ \/ __ \/ __  / __ \/ ___/  / / / / __ \/ __  / __ `/ __/ _ \ 
+    __  ___              _    __               __              __  __          __      __
+   /  |/  /___ ______   | |  / /__  ____  ____/ /___  _____   / / / /___  ____/ /___ _/ /____
+  / /|_/ / __ `/ ___/   | | / / _ \/ __ \/ __  / __ \/ ___/  / / / / __ \/ __  / __ `/ __/ _ \
  / /  / / /_/ / /__     | |/ /  __/ / / / /_/ / /_/ / /     / /_/ / /_/ / /_/ / /_/ / /_/  __/
-/_/  /_/\__,_/\___/     |___/\___/_/ /_/\__,_/\____/_/      \____/ .___/\__,_/\__,_/\__/\___/ 
-                                                                /_/                           
+/_/  /_/\__,_/\___/     |___/\___/_/ /_/\__,_/\____/_/      \____/ .___/\__,_/\__,_/\__/\___/
+                                                                /_/
      ''')
 
     if python:
@@ -48,9 +55,27 @@ def main(python=False, mysql=False, download=False):
 
     elif download:
         download_file()
+    else:
+        show_menu()
+
+
+def my_quit():
+
+    raise SystemExit
+
+
+def invalid():
+    print("INVALID CHOICE!")
+
+
+def show_menu():
+    for key in sorted(MENU_OPTIONS.keys()):
+        print(key+":" + MENU_OPTIONS[key][0])
+
+    ans = input("Your choice: ")
+    MENU_OPTIONS.get(ans, [None, invalid])[1]()
 
 
 if __name__ == '__main__':
-    main()
 
-   
+    main()

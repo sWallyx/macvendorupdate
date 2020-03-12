@@ -1,6 +1,6 @@
 import mysql.connector
 
-from macvendorupdate.modules.database_settings import MYSQL_ERROR_MESSAGES
+from database_settings import MYSQL_ERROR_MESSAGES
 
 class DatabaseActions():
     """

@@ -3,7 +3,7 @@ import urllib.request as urllib
 import sys
 import os
 
-from macvendorupdate.global_values import OUI_FILE, OUI_URL
+from global_values import OUI_FILE, OUI_URL
 
 
 def download_progress(count, block_size, total_size):
@@ -120,3 +120,5 @@ def end_steps(file_to_remove):
 
     print("Done!")
     print("Thanks, see you soon!")
+
+

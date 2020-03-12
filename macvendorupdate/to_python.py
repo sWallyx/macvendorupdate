@@ -4,7 +4,7 @@
 from typing import IO
 import re
 
-from macvendorupdate.misc_functions import(
+from misc_functions import(
     download_file,
     open_python_file,
     close_python_file,
@@ -13,7 +13,7 @@ from macvendorupdate.misc_functions import(
     end_steps
 )
 
-from macvendorupdate.global_values import OUI_FILE, OUI_URL, OUTPUT_FILE_NAME
+from global_values import OUI_FILE, OUI_URL, OUTPUT_FILE_NAME
 
 
 def write_to_file(file_name: str, file: IO):

@@ -4,7 +4,7 @@
 """
 import pytest
 
-from macvendorupdate.misc_functions import get_values_from_line, replace_and_concat
+from misc_functions import get_values_from_line, replace_and_concat
 
 
 @pytest.mark.parametrize(
