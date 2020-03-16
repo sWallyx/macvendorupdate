@@ -2,9 +2,9 @@ import click
 import subprocess
 
 # pylint: disable = import-error
-from to_mysql import update_mysql
-from to_python import update_python
-from misc_functions import download_file
+from macvendorupdate.to_mysql import update_mysql
+from macvendorupdate.to_python import update_python
+from macvendorupdate.misc_functions import download_file
 
 
 @click.option(
