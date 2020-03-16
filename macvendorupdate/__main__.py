@@ -6,13 +6,6 @@ from to_mysql import update_mysql
 from to_python import update_python
 from misc_functions import download_file
 
-MENU_OPTIONS = {
-    "1": (" Download File", download_file),
-    "2": (" Create Python set", update_python),
-    "3": (" Update MySQL Database", update_mysql),
-    "0": (" Quit", my_quit)
-}
-
 
 @click.option(
     '-p',
@@ -75,6 +68,13 @@ def show_menu():
     ans = input("Your choice: ")
     MENU_OPTIONS.get(ans, [None, invalid])[1]()
 
+
+MENU_OPTIONS = {
+    "1": (" Download File", download_file),
+    "2": (" Create Python set", update_python),
+    "3": (" Update MySQL Database", update_mysql),
+    "0": (" Quit", my_quit)
+}
 
 if __name__ == '__main__':
 
