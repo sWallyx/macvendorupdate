@@ -9,7 +9,7 @@ from misc_functions import (
     download_file,
     get_values_from_line,
     replace_and_concat,
-    end_steps
+    end_steps,
 )
 
 from global_values import OUI_FILE, OUI_URL
@@ -42,7 +42,7 @@ def update_mysql():
             if re.search("(hex)", line):
                 mac, vendor = get_values_from_line(line)
 
-                if mac != '' and vendor != '':
+                if mac != "" and vendor != "":
                     sql = "INSERT INTO mac_vendors "
                     sql += "(oui,vendor) "
                     sql += "VALUES ("

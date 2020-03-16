@@ -13,8 +13,7 @@ MYSQL_ERROR_MESSAGES = {
 }
 
 
-class DatabaseSettings():
-
+class DatabaseSettings:
     def __init__(self):
         self.db_host = None
         self.db_name = None
@@ -51,7 +50,7 @@ class DatabaseSettings():
                 host=self.db_host,
                 database=self.db_name,
                 user=self.db_user,
-                password=self.db_pass
+                password=self.db_pass,
             )
         except mysql.connector.Error as err:
             sys.exit(MYSQL_ERROR_MESSAGES[err.errno])

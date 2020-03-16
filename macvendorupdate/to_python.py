@@ -4,13 +4,13 @@
 from typing import IO
 import re
 
-from misc_functions import(
+from misc_functions import (
     download_file,
     open_python_file,
     close_python_file,
     get_values_from_line,
     replace_and_concat,
-    end_steps
+    end_steps,
 )
 
 from global_values import OUI_FILE, OUI_URL, OUTPUT_FILE_NAME

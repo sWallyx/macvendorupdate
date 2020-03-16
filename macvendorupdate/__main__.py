@@ -8,22 +8,22 @@ from misc_functions import download_file
 
 
 @click.option(
-    '-p',
-    '--python',
+    "-p",
+    "--python",
     is_flag=True,
-    help='Updates/generates python oui file with mac vendor info'
+    help="Updates/generates python oui file with mac vendor info",
 )
 @click.option(
-    '-m',
-    '--mysql',
+    "-m",
+    "--mysql",
     is_flag=True,
-    help='Writes the information of the mac vendor into the sql database'
+    help="Writes the information of the mac vendor into the sql database",
 )
 @click.option(
-    '-d',
-    '--download',
+    "-d",
+    "--download",
     is_flag=True,
-    help='Just download the oui.txt file and save it in the main folder'
+    help="Just download the oui.txt file and save it in the main folder",
 )
 def main(python=False, mysql=False, download=False):
     """
@@ -31,14 +31,16 @@ def main(python=False, mysql=False, download=False):
         file or inserts the information into the database. All depends in what
         is selected.
     """
-    print(r'''
+    print(
+        r"""
     __  ___              _    __               __              __  __          __      __
    /  |/  /___ ______   | |  / /__  ____  ____/ /___  _____   / / / /___  ____/ /___ _/ /____
   / /|_/ / __ `/ ___/   | | / / _ \/ __ \/ __  / __ \/ ___/  / / / / __ \/ __  / __ `/ __/ _ \
  / /  / / /_/ / /__     | |/ /  __/ / / / /_/ / /_/ / /     / /_/ / /_/ / /_/ / /_/ / /_/  __/
 /_/  /_/\__,_/\___/     |___/\___/_/ /_/\__,_/\____/_/      \____/ .___/\__,_/\__,_/\__/\___/
                                                                 /_/
-     ''')
+     """
+    )
 
     if python:
         update_python()
@@ -63,7 +65,7 @@ def invalid():
 
 def show_menu():
     for key in sorted(MENU_OPTIONS.keys()):
-        print(key+":" + MENU_OPTIONS[key][0])
+        print(key + ":" + MENU_OPTIONS[key][0])
 
     ans = input("Your choice: ")
     MENU_OPTIONS.get(ans, [None, invalid])[1]()
@@ -73,9 +75,9 @@ MENU_OPTIONS = {
     "1": (" Download File", download_file),
     "2": (" Create Python set", update_python),
     "3": (" Update MySQL Database", update_mysql),
-    "0": (" Quit", my_quit)
+    "0": (" Quit", my_quit),
 }
 
-if __name__ == '__main__':
+if __name__ == "__main__":
 
     main()

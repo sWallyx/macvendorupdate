@@ -10,7 +10,7 @@ def download_progress(count, block_size, total_size):
     """
         Creates a progress bar to indicate the download progress
     """
-    percent = int(count*block_size*100/total_size)
+    percent = int(count * block_size * 100 / total_size)
     sys.stdout.write("\r%d%%" % percent)
     sys.stdout.flush()
 
@@ -24,8 +24,8 @@ def download_file(url: str = OUI_URL, file_name: str = OUI_FILE):
             file_name {str}: Name of the file to download
     """
 
-    print("Downloading from", url+file_name)
-    urllib.urlretrieve(url+file_name, file_name, reporthook=download_progress)
+    print("Downloading from", url + file_name)
+    urllib.urlretrieve(url + file_name, file_name, reporthook=download_progress)
 
 
 def open_python_file(file_name: str):
@@ -40,8 +40,8 @@ def open_python_file(file_name: str):
         Returns:
             IO: file object
     """
-    python_file = open(file_name + '.py', 'w')
-    python_file.write('# -*- coding: utf-8 -*-\noui = {\n')
+    python_file = open(file_name + ".py", "w")
+    python_file.write("# -*- coding: utf-8 -*-\noui = {\n")
 
     return python_file
 
@@ -53,7 +53,7 @@ def close_python_file(python_file: IO):
         Args:
             python_file {IO}:
     """
-    python_file.write('}')
+    python_file.write("}")
 
     # close file
     python_file.close()
@@ -79,7 +79,7 @@ def get_values_from_line(line_to_split: bytes):
     try:
         first_strip, second_strip = line_to_split.strip().split("(hex)")
     except ValueError:
-        first_strip = second_strip = ''
+        first_strip = second_strip = ""
 
     return first_strip.strip(), second_strip.strip()
 
@@ -120,5 +120,3 @@ def end_steps(file_to_remove):
 
     print("Done!")
     print("Thanks, see you soon!")
-
-
