@@ -1,3 +1,6 @@
+"""
+    Module for the database settings
+"""
 import sys
 from getpass import getpass
 
