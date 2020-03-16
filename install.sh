@@ -16,7 +16,8 @@ not_version_error(){
     echo "Thanks, bye :)";
 }
 export_python(){
-    export PYTHONPATH="YOUR_PROJECT_ROOT_ABSOLUTE_PATH:$PYTHONPATH" 
+    PROJECT_ROOT_ABSOLUTE_PATH=$(pwd)
+    export PYTHONPATH="$PROJECT_ROOT_ABSOLUTE_PATH:$PYTHONPATH" 
 }
 
 echo "Making Initial checks:"
