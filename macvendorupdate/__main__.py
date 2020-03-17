@@ -4,8 +4,14 @@ import subprocess
 # pylint: disable = import-error
 from macvendorupdate.to_mysql import update_mysql
 from macvendorupdate.to_python import update_python
-from macvendorupdate.misc_functions import download_file
+from macvendorupdate.misc_functions import download_file, simple_end
 
+MENU_OPTIONS = {
+    "1": (" Download File", download_file),
+    "2": (" Create Python set", update_python),
+    "3": (" Update MySQL Database", update_mysql),
+    "0": (" Quit", simple_end),
+}
 
 @click.option(
     "-p",
@@ -54,11 +60,6 @@ def main(python=False, mysql=False, download=False):
         show_menu()
 
 
-def my_quit():
-
-    raise SystemExit
-
-
 def invalid():
     print("INVALID CHOICE!")
 
@@ -70,13 +71,6 @@ def show_menu():
     ans = input("Your choice: ")
     MENU_OPTIONS.get(ans, [None, invalid])[1]()
 
-
-MENU_OPTIONS = {
-    "1": (" Download File", download_file),
-    "2": (" Create Python set", update_python),
-    "3": (" Update MySQL Database", update_mysql),
-    "0": (" Quit", my_quit),
-}
 
 if __name__ == "__main__":
 
