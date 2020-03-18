@@ -1,9 +1,12 @@
+"""
+    Module for actions inside the database
+"""
 import mysql.connector
 
-from .database_settings import MYSQL_ERROR_MESSAGES
+from macvendorupdate.modules.database_settings import MYSQL_ERROR_MESSAGES
 
 
-class Database_actions():
+class DatabaseActions:
     """
         Object to hold all the actions that the database will
         need to do.
@@ -25,12 +28,11 @@ class Database_actions():
             self.cur.execute(sql_query)
             self.conn.commit()
         except mysql.connector.Error as err:
-            print("Something went wrong: {}".format(
-                MYSQL_ERROR_MESSAGES[err.errno]))
+            print("Something went wrong: {}".format(MYSQL_ERROR_MESSAGES[err.errno]))
 
     def close_database(self):
         """
-            Ends the conexion with the database
+            Ends the connection with the database
         """
         self.cur.close()
         self.conn.close()

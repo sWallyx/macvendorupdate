@@ -3,19 +3,19 @@ import urllib.request as urllib
 import sys
 import os
 
-from global_values import OUI_FILE, OUI_URL, OUTPUT_FILE_NAME
+from macvendorupdate.global_values import OUI_FILE, OUI_URL
 
 
-def dlProgress(count, blockSize, totalSize):
+def download_progress(count, block_size, total_size):
     """
         Creates a progress bar to indicate the download progress
     """
-    percent = int(count*blockSize*100/totalSize)
+    percent = int(count * block_size * 100 / total_size)
     sys.stdout.write("\r%d%%" % percent)
     sys.stdout.flush()
 
 
-def downloadFile(url: str = OUI_URL, file_name: str = OUI_FILE):
+def download_file(url: str = OUI_URL, file_name: str = OUI_FILE):
     """
         Downloads the given file from the given URL
 
@@ -24,11 +24,11 @@ def downloadFile(url: str = OUI_URL, file_name: str = OUI_FILE):
             file_name {str}: Name of the file to download
     """
 
-    print("Downloading from", url+file_name)
-    urllib.urlretrieve(url+file_name, file_name, reporthook=dlProgress)
+    print("Downloading from", url + file_name)
+    urllib.urlretrieve(url + file_name, file_name, reporthook=download_progress)
 
 
-def openPythonFile(file_name: str):
+def open_python_file(file_name: str):
     """
         Creates or opens the file if exists. And starts writing on it.
 
@@ -40,20 +40,20 @@ def openPythonFile(file_name: str):
         Returns:
             IO: file object
     """
-    python_file = open(file_name + '.py', 'w')
-    python_file.write('# -*- coding: utf-8 -*-\noui = {\n')
+    python_file = open(file_name + ".py", "w")
+    python_file.write("# -*- coding: utf-8 -*-\noui = {\n")
 
     return python_file
 
 
-def closePythonFile(python_file: IO):
+def close_python_file(python_file: IO):
     """
         Closes the file, closing first the object inside it.
 
         Args:
             python_file {IO}:
     """
-    python_file.write('}')
+    python_file.write("}")
 
     # close file
     python_file.close()
@@ -62,7 +62,7 @@ def closePythonFile(python_file: IO):
     print("\noui.py updated")
 
 
-def getValuesFromLine(line_to_split: bytes):
+def get_values_from_line(line_to_split: bytes):
     """
         Splits the line into 2 values if possible.
 
@@ -77,14 +77,14 @@ def getValuesFromLine(line_to_split: bytes):
     """
 
     try:
-        v1, v2 = line_to_split.strip().split("(hex)")
-    except Exception:
-        v1 = v2 = ''
+        first_strip, second_strip = line_to_split.strip().split("(hex)")
+    except ValueError:
+        first_strip = second_strip = ""
 
-    return v1, v2
+    return first_strip.strip(), second_strip.strip()
 
 
-def strip_and_concat(mac, vendor, python_option=True):
+def replace_and_concat(mac, vendor, python_option=True):
     """
         Creates single string depending on the selected mode.
 
@@ -99,20 +99,30 @@ def strip_and_concat(mac, vendor, python_option=True):
         Returns:
             str: concat string with the selected format
     """
-    if(python_option):
-        string = '\t"%s": ' % mac.strip().replace("-", ":").lower()
-        string += '"%s",\n' % vendor.strip().replace("'", "`")
+    if python_option:
+        string = '\t"%s": ' % mac.replace("-", ":").lower()
+        string += '"%s",\n' % vendor.replace("'", "`")
     else:
-        string = "'%s'," % mac.strip().replace("-", ":").lower()
-        string += "'%s'" % vendor.strip().replace("'", "`")
+        string = "'%s'," % mac.replace("-", ":").lower()
+        string += "'%s'" % vendor.replace("'", "`")
 
     return string
 
 
 def end_steps(file_to_remove):
+    """
+        Step to end the application, by removing the file and
+        showing a message.
+    """
     # Remove temporal file
     print("\nRemoving temportal file")
     os.remove(file_to_remove)
 
     print("Done!")
     print("Thanks, see you soon!")
+    raise SystemExit
+
+
+def simple_end():
+    print("Thanks, see you soon!")
+    raise SystemExit

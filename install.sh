@@ -1,11 +1,12 @@
 #!/bin/bash
 
+correct_python_message(){
+    echo "true";
+    echo "[OK] -- Python 3 installed"
+}
+
 create_virtual_env(){
-    sudo pip3 install virtualenv
-    python3 -m virtualenv env
-    source env/bin/activate
     python3 setup.py install
-    deactivate
 }
 
 not_version_error(){
@@ -14,14 +15,18 @@ not_version_error(){
     echo " - - - - - - - - - - - - - - - - - - - - - - - -";
     echo "Thanks, bye :)";
 }
+export_python(){
+    PROJECT_ROOT_ABSOLUTE_PATH=$(pwd)
+    export PYTHONPATH="$PROJECT_ROOT_ABSOLUTE_PATH:$PYTHONPATH" 
+}
 
 echo "Making Initial checks:"
 
 # Check if Python 3 is installed
 if [[ "$(python3 -V)" =~ "Python 3" ]]; then
-    echo "true";
-    echo "[OK] -- Python 3 installed"
     create_virtual_env
+    export_python
 else
     not_version_error
 fi
+

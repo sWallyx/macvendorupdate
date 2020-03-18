@@ -13,6 +13,8 @@ Diferent ways to update the mac vendor files, using the official oui.txt from [s
 
 ### Command examples
 
+There are two ways of using the application, you can run the application with just `python macvendorupdate` or you can use the parameters to execute directly the mode you want:
+
 ```
 python macvendorupdate --help
 Usage: macvendorupdate [OPTIONS]

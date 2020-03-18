@@ -1,7 +1,10 @@
-from getpass import getpass
-import mysql.connector
+"""
+    Module for the database settings
+"""
 import sys
+from getpass import getpass
 
+import mysql.connector
 
 MYSQL_ERROR_MESSAGES = {
     1036: "I don't know how to write in here, I can only read this table",
@@ -13,8 +16,7 @@ MYSQL_ERROR_MESSAGES = {
 }
 
 
-class Database_settings():
-
+class DatabaseSettings:
     def __init__(self):
         self.db_host = None
         self.db_name = None
@@ -51,7 +53,7 @@ class Database_settings():
                 host=self.db_host,
                 database=self.db_name,
                 user=self.db_user,
-                password=self.db_pass
+                password=self.db_pass,
             )
         except mysql.connector.Error as err:
             sys.exit(MYSQL_ERROR_MESSAGES[err.errno])
