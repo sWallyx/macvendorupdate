@@ -122,6 +122,7 @@ def end_steps(file_to_remove):
     print("Thanks, see you soon!")
     raise SystemExit
 
+
 def simple_end():
     print("Thanks, see you soon!")
     raise SystemExit

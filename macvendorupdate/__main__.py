@@ -13,6 +13,7 @@ MENU_OPTIONS = {
     "0": (" Quit", simple_end),
 }
 
+
 @click.option(
     "-p",
     "--python",
