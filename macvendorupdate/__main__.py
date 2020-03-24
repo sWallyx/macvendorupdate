@@ -1,10 +1,11 @@
-import click
 import subprocess
 
+import click
+
+from macvendorupdate.misc_functions import download_file, simple_end
 # pylint: disable = import-error
 from macvendorupdate.to_mysql import update_mysql
 from macvendorupdate.to_python import update_python
-from macvendorupdate.misc_functions import download_file, simple_end
 
 MENU_OPTIONS = {
     "1": (" Download File", download_file),

@@ -1,19 +1,18 @@
 """
     This file contains the functions for the option python
 """
-from typing import IO
 import re
-
-from macvendorupdate.misc_functions import (
-    download_file,
-    open_python_file,
-    close_python_file,
-    get_values_from_line,
-    replace_and_concat,
-    end_steps,
-)
+from typing import IO
 
 from macvendorupdate.global_values import OUI_FILE, OUI_URL, OUTPUT_FILE_NAME
+from macvendorupdate.misc_functions import (
+    close_python_file,
+    download_file,
+    end_steps,
+    get_values_from_line,
+    open_python_file,
+    replace_and_concat,
+)
 
 
 def write_to_file(file_name: str, file: IO):
