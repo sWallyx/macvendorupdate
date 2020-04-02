@@ -2,6 +2,7 @@ import requests
 from progress.bar import Bar
 from progress.spinner import Spinner
 
+
 class Download:
     def __init__(self, origin_url: str, save_file: str):
         """
@@ -15,15 +16,15 @@ class Download:
         """
         request_call = requests.get(origin_url, stream=True)
 
-        file_size = request_call.headers['content-length']
+        file_size = request_call.headers["content-length"]
         if file_size:
             progress_status = Bar(save_file, max=int(file_size))
         else:
             progress_status = Spinner(save_file)
 
-        with open(save_file, 'wb') as file_:
-            for chunk in request_call.iter_content(chunk_size=1024*50):
-                if chunk: # filter out keep-alive new chunks
+        with open(save_file, "wb") as file_:
+            for chunk in request_call.iter_content(chunk_size=1024 * 50):
+                if chunk:  # filter out keep-alive new chunks
                     progress_status.next(len(chunk))
                     file_.write(chunk)
 

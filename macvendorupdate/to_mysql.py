@@ -13,6 +13,7 @@ from macvendorupdate.modules.database_actions import DatabaseActions
 from macvendorupdate.modules.database_settings import DatabaseSettings
 from macvendorupdate.modules.download_module import Download
 
+
 def update_mysql():
     """
         Writes the info from the file into the MySQL table.

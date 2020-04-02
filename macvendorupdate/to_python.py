@@ -15,6 +15,7 @@ from macvendorupdate.misc_functions import (
 
 from macvendorupdate.modules.download_module import Download
 
+
 def write_to_file(file_name: str, file: IO):
     """
         Opens file given by name, and writes the hex line on the final file.

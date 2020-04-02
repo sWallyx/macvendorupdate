@@ -3,6 +3,7 @@ import subprocess
 import click
 
 from macvendorupdate.misc_functions import simple_end
+
 # pylint: disable = import-error
 from macvendorupdate.to_mysql import update_mysql
 from macvendorupdate.to_python import update_python
