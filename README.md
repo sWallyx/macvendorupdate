@@ -1,8 +1,8 @@
 # Mac Vendor Update
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e819d35555ad478f8565df0f883833a4)](https://app.codacy.com/manual/mikelsmartinez/macvendorupdate?utm_source=github.com&utm_medium=referral&utm_content=sWallyx/macvendorupdate&utm_campaign=Badge_Grade_Dashboard)
+[![CodeFactor](https://www.codefactor.io/repository/github/swallyx/macvendorupdate/badge/update-download-method)](https://www.codefactor.io/repository/github/swallyx/macvendorupdate/overview/update-download-method)
 
-Diferent ways to update the mac vendor files, using the official oui.txt from [standards-oui.ieee.org](http://standards-oui.ieee.org/oui.txt). The files downloads the file and saves it in diferent ways and places for example:
+Different ways to update the mac vendor files, using the official oui.txt from [standards-oui.ieee.org](http://standards-oui.ieee.org/oui.txt). The files downloads the file and saves it in different ways and places for example:
 
   - Python file
   - MySQL database
@@ -21,7 +21,7 @@ Usage: macvendorupdate [OPTIONS]
 
 Options:
   -p, --python    Updates/generates python oui file with mac vendor info
-  -m, --mysql     Writes the infor of the mac vendor into the sql database
+  -m, --mysql     Writes the information of the mac vendor into the sql database
   -d, --download  Just download the oui.txt file and save it in the main folder
   --help        Show this message and exit.
 ```
@@ -63,16 +63,16 @@ ALTER TABLE mac_vendors
 ### Used modules
 
 * re
-* urllib.request
 * sys
 * mysql.connector
-* pathlib
 * os
 * click
+* progress
+* requests
 
 ## Requisites
 
-The application is made for Python 3 or higher. The installation script will make sure everything is ready, it will install all the packages on a virtual enviroment.
+The application is made for Python 3 or higher. The installation script will make sure everything is ready, it will install all the packages on a virtual environment.
 
 ## How to install
 
@@ -87,20 +87,20 @@ Run the install script
 ./install.sh
 ```
 
-_Note:_ It may ask for administrator password to install the virtualenv package if not installed.
+_Note:_ It may ask for administrator password to install the `virtualenv` package if not installed.
 
 ## Know errors
 
-### Permision error (FIXED with new install)
+### Permission error (FIXED with new install)
 
-Some users had problems installing because of the permisions. You can create a virtual enviroment for this application with (you need to have `venv` installed):
+Some users had problems installing because of the permissions. You can create a virtual environment for this application with (you need to have `venv` installed):
 
 ``` bash
 python3 -m venv env     # Create virtual env
-source env/bin/activate # Activates the enviroment
+source env/bin/activate # Activates the environment
 ```
 
-Quit the enviroment with `deactivate`
+Quit the environment with `deactivate`
 
 ### File download error
 
@@ -152,9 +152,6 @@ _Note:_ Some machines may have the `python` command for Python 2 and `python3 `c
 
 # ToDo list
 
-* [x] Option for local file, and exit download
-* [x] Automatize virtual enviroment creation
-* [x] Create new install bash script to start the enviroment also
 * [ ] Option to update database and remove the need of empty database
 * [ ] Bash Script for application update
 

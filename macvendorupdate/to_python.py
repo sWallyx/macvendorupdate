@@ -7,12 +7,13 @@ from typing import IO
 from macvendorupdate.global_values import OUI_FILE, OUI_URL, OUTPUT_FILE_NAME
 from macvendorupdate.misc_functions import (
     close_python_file,
-    download_file,
     end_steps,
     get_values_from_line,
     open_python_file,
     replace_and_concat,
 )
+
+from macvendorupdate.modules.download_module import Download
 
 
 def write_to_file(file_name: str, file: IO):
@@ -40,7 +41,7 @@ def update_python():
         with a JSON object with the MAC address and vendors.
     """
 
-    download_file(OUI_URL, OUI_FILE)
+    Download(OUI_URL + OUI_FILE, OUI_FILE)
 
     file_ = open_python_file(OUTPUT_FILE_NAME)
 

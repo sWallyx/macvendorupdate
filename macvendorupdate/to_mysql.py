@@ -5,13 +5,13 @@ import re
 
 from macvendorupdate.global_values import OUI_FILE, OUI_URL
 from macvendorupdate.misc_functions import (
-    download_file,
     end_steps,
     get_values_from_line,
     replace_and_concat,
 )
 from macvendorupdate.modules.database_actions import DatabaseActions
 from macvendorupdate.modules.database_settings import DatabaseSettings
+from macvendorupdate.modules.download_module import Download
 
 
 def update_mysql():
@@ -33,7 +33,7 @@ def update_mysql():
     database_action = DatabaseActions(conn)
 
     # download oui.txt
-    download_file(OUI_URL, OUI_FILE)
+    Download(OUI_URL + OUI_FILE, OUI_FILE)
 
     # parsing oui.txt data
     with open(OUI_FILE) as in_file:

@@ -6,28 +6,6 @@ from typing import IO
 from macvendorupdate.global_values import OUI_FILE, OUI_URL
 
 
-def download_progress(count, block_size, total_size):
-    """
-        Creates a progress bar to indicate the download progress
-    """
-    percent = int(count * block_size * 100 / total_size)
-    sys.stdout.write("\r%d%%" % percent)
-    sys.stdout.flush()
-
-
-def download_file(url: str = OUI_URL, file_name: str = OUI_FILE):
-    """
-        Downloads the given file from the given URL
-
-        Args:
-            url {str}: Url to search the file
-            file_name {str}: Name of the file to download
-    """
-
-    print("Downloading from", url + file_name)
-    urllib.urlretrieve(url + file_name, file_name, reporthook=download_progress)
-
-
 def open_python_file(file_name: str):
     """
         Creates or opens the file if exists. And starts writing on it.
