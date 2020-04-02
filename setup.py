@@ -17,7 +17,7 @@ setup(
         "download",
     ],
     classifiers=[],
-    install_requires=["click", "mysql-connector-python"],
+    install_requires=["click", "mysql-connector-python", "progress", "requests"],
     setup_requires=[],
     tests_require=[],
     packages=find_packages(),

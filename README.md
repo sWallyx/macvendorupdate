@@ -69,6 +69,8 @@ ALTER TABLE mac_vendors
 * pathlib
 * os
 * click
+* progress
+* requests
 
 ## Requisites
 
