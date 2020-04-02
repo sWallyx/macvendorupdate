@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 setup(
     name="macvendorupdate",
-    version="0.2.6",
+    version="0.2.7",
     description="Scripts to update the mac address brand list to a Python file or a MySQL DataBase",
     author="sWallyx",
     keywords=[
