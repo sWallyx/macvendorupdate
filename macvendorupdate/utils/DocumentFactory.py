@@ -1,6 +1,6 @@
 """ Method to create a dummy file for testing purposes """
 import os
-
+from typing import IO
 
 class DocumentFactory:
     """ This class will create a file with a given name """
@@ -18,6 +18,19 @@ class DocumentFactory:
         self.path = os.path.realpath(file_.name)
         self.file = file_
 
-    def get_file(self):
+    def get_file(self) -> IO:
         """ Returns the file element of the DocumentFactory """
         return self.file
+
+    def remove_file(self) -> bool:
+        """ 
+            Removes the file from the directory 
+
+            Returns:
+                bool: True or False depending if it succeeded    
+        """
+        try:
+            os.remove(self.name)
+            return True
+        except FileNotFoundError:
+            return False
