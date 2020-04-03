@@ -1,6 +1,7 @@
 """ Method to create a dummy file for testing purposes """
 import os
 
+
 class DocumentFactory:
     """ This class will create a file with a given name """
 
