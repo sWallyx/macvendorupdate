@@ -6,7 +6,7 @@ from typing import IO
 from macvendorupdate.global_values import OUI_FILE, OUI_URL
 
 
-def open_python_file(file_name: str):
+def open_python_file(file_name: str) -> IO:
     """
         Creates or opens the file if exists. And starts writing on it.
 
@@ -40,7 +40,7 @@ def close_python_file(python_file: IO):
     print("\noui.py updated")
 
 
-def get_values_from_line(line_to_split: bytes):
+def get_values_from_line(line_to_split: bytes) -> [str, str]:
     """
         Splits the line into 2 values if possible.
 
@@ -50,8 +50,7 @@ def get_values_from_line(line_to_split: bytes):
             line_to_split {bytes}: line to split
 
         Returns:
-            str: mac value, first element of split
-            str: vendor value, second element of split
+            [str, str]: mac value, vendor value
     """
 
     try:
@@ -62,7 +61,7 @@ def get_values_from_line(line_to_split: bytes):
     return first_strip.strip(), second_strip.strip()
 
 
-def replace_and_concat(mac, vendor, python_option=True):
+def replace_and_concat(mac: str, vendor: str, python_option=True) -> str:
     """
         Creates single string depending on the selected mode.
 
@@ -87,14 +86,13 @@ def replace_and_concat(mac, vendor, python_option=True):
     return string
 
 
-def end_steps(file_to_remove):
+def end_steps(file_to_remove: str):
     """
         Step to end the application, by removing the file and
         showing a message.
     """
     # Remove temporal file
-    print("\nRemoving temportal file")
-    os.remove(file_to_remove)
+    remove_file(file_to_remove)
 
     print("Done!")
     print("Thanks, see you soon!")
@@ -102,5 +100,15 @@ def end_steps(file_to_remove):
 
 
 def simple_end():
+    """ Just ends the app """
     print("Thanks, see you soon!")
     raise SystemExit
+
+
+def remove_file(file_to_remove: str):
+    """ Removes the given file, caches FileNotFoundError exception """
+    print("\nRemoving temportal file")
+    try:
+        os.remove(file_to_remove)
+    except FileNotFoundError:
+        pass
