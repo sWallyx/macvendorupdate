@@ -8,6 +8,6 @@ progress==1.5
 protobuf==3.11.3
 requests==2.23.0
 six==1.14.0
-urllib3==1.25.8
+urllib3==1.25.9
 virtualenv==20.0.18
 wcwidth==0.1.9
