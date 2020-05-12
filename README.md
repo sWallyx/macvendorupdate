@@ -1,6 +1,7 @@
 # Mac Vendor Update
 
 [![CodeFactor](https://www.codefactor.io/repository/github/swallyx/macvendorupdate/badge)](https://www.codefactor.io/repository/github/swallyx/macvendorupdate)
+[![codecov](https://codecov.io/gh/sWallyx/macvendorupdate/branch/master/graph/badge.svg)](https://codecov.io/gh/sWallyx/macvendorupdate)
 
 Different ways to update the mac vendor files, using the official oui.txt from [standards-oui.ieee.org](http://standards-oui.ieee.org/oui.txt). The files downloads the file and saves it in different ways and places for example:
 
