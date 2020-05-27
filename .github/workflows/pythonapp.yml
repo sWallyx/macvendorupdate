@@ -1,10 +1,10 @@
-# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# This workflow will install Python dependencies, run tests with coverage, upload coverage to codecov and
+# lint with a single version of Python.
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
 
-name: Run Pytest
+name: Run Pytest and Codecov
 on:
   push:
-    branches: [ master ]
   pull_request:
     branches: [ master ]
 
@@ -18,9 +18,9 @@ jobs:
       OS: ${{ matrix.os }}
       PYTHON: '3.7'
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@master
     - name: Set up Python 3.8
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@master
       with:
         python-version: 3.8
     - name: Install dependencies
@@ -34,7 +34,16 @@ jobs:
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-    - name: Test with pytest
+    - name: Test with pytest with coverage
       run: |
         pip install pytest
+        pip install pytest-cov
         pytest
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1.0.7
+      with:
+        file: ./coverage.xml
+        flags: unittests
+        env_vars: OS,PYTHON
+        name: codecov-umbrella
+        fail_ci_if_error: true
