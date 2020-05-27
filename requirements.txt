@@ -7,7 +7,7 @@ mysql-connector-python==8.0.20
 progress==1.5
 protobuf==3.11.3
 requests==2.23.0
-six==1.14.0
+six==1.15.0
 urllib3==1.25.9
 virtualenv==20.0.20
 wcwidth==0.1.9
