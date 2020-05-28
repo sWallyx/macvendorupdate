@@ -2,6 +2,7 @@
 import os
 from typing import IO
 
+
 class DocumentFactory:
     """ This class will create a file with a given name """
 
