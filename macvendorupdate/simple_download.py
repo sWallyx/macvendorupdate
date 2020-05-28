@@ -2,7 +2,7 @@
     This script will call to the download class just to
     make a simple download
 """
-from macvendorupdate.global_values import OUI_FILE, OUI_URL, OUTPUT_FILE_NAME
+from macvendorupdate.global_values import OUI_FILE, OUI_URL
 from macvendorupdate.modules.download_module import Download
 
 
