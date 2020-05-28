@@ -1,8 +1,6 @@
 import os
 from typing import IO
 
-from macvendorupdate.global_values import OUI_FILE, OUI_URL
-
 
 def open_python_file(file_name: str) -> IO:
     """
