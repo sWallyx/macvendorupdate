@@ -24,11 +24,11 @@ class DocumentFactory:
         return self.file
 
     def remove_file(self) -> bool:
-        """ 
-            Removes the file from the directory 
+        """
+            Removes the file from the directory
 
             Returns:
-                bool: True or False depending if it succeeded    
+                bool: True or False depending if it succeeded
         """
         try:
             os.remove(self.name)
