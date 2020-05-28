@@ -1,5 +1,3 @@
-import subprocess
-
 import click
 
 from macvendorupdate.misc_functions import simple_end
