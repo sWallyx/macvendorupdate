@@ -1,5 +1,4 @@
 import os
-import urllib.request as urllib
 from typing import IO
 
 from macvendorupdate.global_values import OUI_FILE, OUI_URL
