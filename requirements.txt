@@ -3,7 +3,7 @@ chardet==3.0.4
 click==7.1.2
 dnspython==1.16.0
 idna==2.10
-mysql-connector-python==8.0.20
+mysql-connector-python==8.0.21
 progress==1.5
 protobuf==3.12.2
 requests==2.24.0
