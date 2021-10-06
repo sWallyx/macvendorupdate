@@ -5,7 +5,7 @@ dnspython==2.0.0
 idna==3.2
 mysql-connector-python==8.0.26
 progress==1.6
-protobuf==3.18.0
+protobuf==3.18.1
 requests==2.26.0
 six==1.15.0
 urllib3==1.26.7
