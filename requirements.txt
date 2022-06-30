@@ -6,7 +6,7 @@ idna==3.3
 mysql-connector-python==8.0.27
 progress==1.6
 protobuf==3.19.1
-requests==2.26.0
+requests==2.28.1
 six==1.16.0
 urllib3==1.26.7
 virtualenv==20.9.0
